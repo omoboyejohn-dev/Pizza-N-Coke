@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Add Funds | Pizza N Coke</title>
+
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<header class="dashboard-header">
+
+  <div class="dashboard-nav">
+
+    <div class="logo">
+      Pizza 🍕 <span>N</span> <b>Coke</b>
+    </div>
+
+    <a
+      href="dashboard.html"
+      class="logout-button"
+    >
+      Dashboard
+    </a>
+
+  </div>
+
+</header>
+
+
+<main class="page-container">
+
+  <div class="page-card">
+
+    <div class="plans-heading">
+
+      <h2>
+        Add Funds
+      </h2>
+
+      <p>
+        Submit your payment information for review.
+      </p>
+
+    </div>
+
+
+    <div class="plan-card" style="margin-top:20px;">
+
+      <div class="plan-number">
+        PAYMENT ACCOUNT
+      </div>
+
+      <div class="plan-info" style="margin-top:15px;">
+
+        <div>
+          Bank Name
+          <strong>
+            TENN-MFB
+          </strong>
+        </div>
+
+        <div>
+          Account Number
+          <strong>
+            5777198543
+          </strong>
+        </div>
+
+        <div>
+          Account Name
+          <strong>
+            Promise Omowumi Adeyeye
+          </strong>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div
+      id="message"
+      class="message"
+    ></div>
+
+
+    <div class="input-group">
+
+      <label>
+        Amount Paid
+      </label>
+
+      <input
+        type="number"
+        id="amount"
+        placeholder="Enter amount"
+        min="1"
+      >
+
+    </div>
+
+
+    <div class="input-group">
+
+      <label>
+        Sender Name
+      </label>
+
+      <input
+        type="text"
+        id="senderName"
+        placeholder="Name used for payment"
+      >
+
+    </div>
+
+
+    <div class="input-group">
+
+      <label>
+        Transaction Reference
+      </label>
+
+      <input
+        type="text"
+        id="reference"
+        placeholder="Enter transaction reference"
+      >
+
+    </div>
+
+
+    <button
+      id="submitBtn"
+      class="next-button"
+    >
+      I HAVE PAID
+    </button>
+
+  </div>
+
+</main>
+
+
+<script type="module">
+
+import {
+  auth,
+  db
+} from "./firebase-config.js";
+
+
+import {
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+
+
+import {
+  addDoc,
+  collection,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+
+
+let currentUser = null;
+
+
+onAuthStateChanged(auth, (user) => {
+
+  if (!user) {
+
+    location.href = "login.html";
+
+    return;
+
+  }
+
+  currentUser = user;
+
+});
+
+
+document
+  .getElementById("submitBtn")
+  .addEventListener("click", async () => {
+
+    const amount =
+      Number(
+        document.getElementById("amount").value
+      );
+
+    const senderName =
+      document.getElementById("senderName")
+        .value.trim();
+
+    const reference =
+      document.getElementById("reference")
+        .value.trim();
+
+    const message =
+      document.getElementById("message");
+
+
+    if (!currentUser) {
+
+      message.textContent =
+        "Please login again.";
+
+      message.className =
+        "message error";
+
+      return;
+
+    }
+
+
+    if (
+      !amount ||
+      amount <= 0 ||
+      !senderName ||
+      !reference
+    ) {
+
+      message.textContent =
+        "Please complete all fields.";
+
+      message.className =
+        "message error";
+
+      return;
+
+    }
+
+
+    const button =
+      document.getElementById("submitBtn");
+
+    button.disabled = true;
+
+    button.textContent =
+      "SUBMITTING...";
+
+
+    try {
+
+      await addDoc(
+        collection(db, "depositRequests"),
+        {
+
+          uid: currentUser.uid,
+
+          email: currentUser.email,
+
+          amount: amount,
+
+          senderName: senderName,
+
+          transactionReference: reference,
+
+          status: "pending",
+
+          createdAt: serverTimestamp()
+
+        }
+      );
+
+
+      message.textContent =
+        "Deposit submitted successfully. Please wait for admin review.";
+
+      message.className =
+        "message success";
+
+
+      document.getElementById("amount").value = "";
+      document.getElementById("senderName").value = "";
+      document.getElementById("reference").value = "";
+
+
+    } catch (error) {
+
+      console.error(error);
+
+      message.textContent =
+        "Unable to submit deposit. Please try again.";
+
+      message.className =
+        "message error";
+
+    }
+
+
+    button.disabled = false;
+
+    button.textContent =
+      "I HAVE PAID";
+
+  });
+
+</script>
+
+</body>
+</html>
