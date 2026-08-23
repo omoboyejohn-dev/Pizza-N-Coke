@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Customer Support | Pizza N Coke</title>
+
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<header class="dashboard-header">
+
+  <div class="dashboard-nav">
+
+    <div class="logo">
+      Pizza 🍕 <span>N</span> <b>Coke</b>
+    </div>
+
+    <a
+      href="dashboard.html"
+      class="logout-button"
+    >
+      Dashboard
+    </a>
+
+  </div>
+
+</header>
+
+
+<main class="page-container">
+
+  <div class="page-card">
+
+    <div class="plans-heading">
+
+      <h2>
+        Customer Support
+      </h2>
+
+      <p>
+        How can we help you?
+      </p>
+
+    </div>
+
+
+    <div class="plan-card" style="margin-top:20px;">
+
+      <div class="plan-number">
+        💬 SUPPORT
+      </div>
+
+      <p
+        style="
+          margin-top:10px;
+          line-height:1.6;
+          color:#7c8797;
+        "
+      >
+        If you have an issue with your account,
+        deposit, withdrawal or another feature,
+        contact the support team.
+      </p>
+
+    </div>
+
+
+    <div class="input-group">
+
+      <label>
+        Subject
+      </label>
+
+      <input
+        id="subject"
+        type="text"
+        placeholder="What do you need help with?"
+      >
+
+    </div>
+
+
+    <div class="input-group">
+
+      <label>
+        Message
+      </label>
+
+      <textarea
+        id="messageText"
+        rows="6"
+        placeholder="Describe your issue..."
+      ></textarea>
+
+    </div>
+
+
+    <div
+      id="message"
+      class="message"
+    ></div>
+
+
+    <button
+      id="sendBtn"
+      class="next-button"
+    >
+      SEND MESSAGE
+    </button>
+
+  </div>
+
+</main>
+
+
+<script type="module">
+
+import {
+  auth,
+  db
+} from "./firebase-config.js";
+
+
+import {
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+
+
+import {
+  addDoc,
+  collection,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+
+
+let currentUser = null;
+
+
+onAuthStateChanged(auth, (user) => {
+
+  if (!user) {
+
+    location.href = "login.html";
+
+    return;
+
+  }
+
+  currentUser = user;
+
+});
+
+
+document
+  .getElementById("sendBtn")
+  .addEventListener("click", async () => {
+
+
+    const subject =
+      document.getElementById("subject")
+        .value.trim();
+
+
+    const text =
+      document.getElementById("messageText")
+        .value.trim();
+
+
+    const message =
+      document.getElementById("message");
+
+
+    if (!subject || !text) {
+
+      message.textContent =
+        "Please enter a subject and message.";
+
+      message.className =
+        "message error";
+
+      return;
+
+    }
+
+
+    try {
+
+      await addDoc(
+        collection(db, "supportTickets"),
+        {
+
+          uid: currentUser.uid,
+
+          email: currentUser.email,
+
+          subject: subject,
+
+          message: text,
+
+          status: "open",
+
+          createdAt: serverTimestamp()
+
+        }
+      );
+
+
+      message.textContent =
+        "Your support request has been submitted.";
+
+      message.className =
+        "message success";
+
+
+      document.getElementById("subject").value = "";
+
+      document.getElementById("messageText").value = "";
+
+
+    } catch (error) {
+
+      console.error(error);
+
+      message.textContent =
+        "Unable to send your message.";
+
+      message.className =
+        "message error";
+
+    }
+
+  });
+
+</script>
+
+</body>
+</html>
