@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login | Pizza N Coke</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        .login-page {
+            min-height: 100vh;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            background: #050505;
+        }
+
+        .login-left {
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+
+            padding: 60px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(0,0,0,.8),
+                    rgba(0,40,100,.7)
+                ),
+                url("https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=1400&q=85")
+                center/cover;
+        }
+
+        .login-left h1 {
+            font-size: clamp(45px,5vw,75px);
+            line-height: 1;
+            font-weight: 900;
+        }
+
+        .login-left h1 span {
+            color: #ffd21c;
+        }
+
+        .login-left p {
+            max-width: 500px;
+            margin-top: 20px;
+            color: #ddd;
+        }
+
+        .brand {
+            font-size: 30px;
+            font-weight: 900;
+            margin-bottom: 30px;
+        }
+
+        .brand b {
+            color: #ffd21c;
+        }
+
+        .brand span {
+            color: #35a7ff;
+        }
+
+        .login-right {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 30px;
+        }
+
+        .login-box {
+            width: min(100%,450px);
+
+            padding: 38px;
+
+            background: #0b111a;
+
+            border: 1px solid rgba(0,125,255,.3);
+
+            border-radius: 22px;
+        }
+
+        .login-box h2 {
+            font-size: 33px;
+        }
+
+        .login-box h2 span {
+            color: #ffd21c;
+        }
+
+        .subtitle {
+            color: #929ba7;
+            margin: 8px 0 25px;
+            font-size: 14px;
+        }
+
+        .form-group {
+            margin-bottom: 17px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 7px;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 14px;
+
+            background: #070b10;
+            color: white;
+
+            border: 1px solid rgba(255,255,255,.12);
+            border-radius: 11px;
+
+            outline: none;
+        }
+
+        .form-input:focus {
+            border-color: #087cff;
+        }
+
+        .login-options {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0 20px;
+
+            font-size: 12px;
+        }
+
+        .remember {
+            color: #999;
+        }
+
+        .remember input {
+            accent-color: #ffd21c;
+        }
+
+        .forgot {
+            color: #ffd21c;
+        }
+
+        .login-btn-main {
+            width: 100%;
+
+            padding: 15px;
+
+            border: none;
+            border-radius: 11px;
+
+            background: #ffd21c;
+            color: #000;
+
+            font-weight: 900;
+
+            cursor: pointer;
+        }
+
+        .login-btn-main:disabled {
+            opacity: .6;
+        }
+
+        .message {
+            display: none;
+
+            padding: 12px;
+            margin-bottom: 15px;
+
+            border-radius: 10px;
+
+            font-size: 13px;
+        }
+
+        .message.show {
+            display: block;
+        }
+
+        .message.error {
+            background: rgba(255,50,50,.1);
+            color: #ff7777;
+        }
+
+        .message.success {
+            background: rgba(30,200,100,.1);
+            color: #55df91;
+        }
+
+        .switch {
+            text-align: center;
+            margin-top: 22px;
+
+            color: #929ba7;
+            font-size: 13px;
+        }
+
+        .switch a {
+            color: #ffd21c;
+            font-weight: 800;
+        }
+
+        @media(max-width:800px) {
+
+            .login-page {
+                grid-template-columns: 1fr;
+            }
+
+            .login-left {
+                min-height: 300px;
+                padding: 40px 25px;
+            }
+
+            .login-left h1 {
+                font-size: 42px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="login-page">
+
+
+    <section class="login-left">
+
+        <div>
+
+            <div class="brand">
+                Pizza 🍕 <b>N</b> <span>Coke</span>
+            </div>
+
+            <h1>
+                WELCOME
+                <br>
+                <span>BACK.</span>
+            </h1>
+
+            <p>
+                Login to your account and continue to
+                your Pizza N Coke dashboard.
+            </p>
+
+            <div style="font-size:55px;margin-top:25px;">
+                🍕 🥤 ❤️
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="login-right">
+
+        <div class="login-box">
+
+            <h2>
+                Welcome <span>Back</span>
+            </h2>
+
+            <p class="subtitle">
+                Login to continue.
+            </p>
+
+            <div id="message" class="message"></div>
+
+
+            <form id="loginForm">
+
+                <div class="form-group">
+
+                    <label>Email Address</label>
+
+                    <input
+                        id="email"
+                        class="form-input"
+                        type="email"
+                        placeholder="Enter your email"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Password</label>
+
+                    <input
+                        id="password"
+                        class="form-input"
+                        type="password"
+                        placeholder="Enter your password"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="login-options">
+
+                    <label class="remember">
+
+                        <input
+                            type="checkbox"
+                            id="remember"
+                        >
+
+                        Remember me
+
+                    </label>
+
+
+                    <a
+                        href="#"
+                        class="forgot"
+                        id="forgot"
+                    >
+                        Forgot Password?
+                    </a>
+
+                </div>
+
+
+                <button
+                    id="loginBtn"
+                    class="login-btn-main"
+                    type="submit"
+                >
+                    Login
+                </button>
+
+            </form>
+
+
+            <div class="switch">
+
+                Don't have an account?
+
+                <a href="register.html">
+                    Create Account
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+<script type="module">
+
+import {
+    auth
+} from "./firebase-config.js";
+
+import {
+    signInWithEmailAndPassword,
+    sendPasswordResetEmail,
+    setPersistence,
+    browserLocalPersistence,
+    browserSessionPersistence
+} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+
+
+const form =
+    document.getElementById("loginForm");
+
+const message =
+    document.getElementById("message");
+
+const button =
+    document.getElementById("loginBtn");
+
+
+function showMessage(text, type) {
+
+    message.textContent = text;
+    message.className = "message show " + type;
+
+}
+
+
+form.addEventListener("submit", async (e) => {
+
+    e.preventDefault();
+
+    const email =
+        document.getElementById("email").value.trim();
+
+    const password =
+        document.getElementById("password").value;
+
+    const remember =
+        document.getElementById("remember").checked;
+
+
+    button.disabled = true;
+    button.textContent = "Logging in...";
+
+
+    try {
+
+        await setPersistence(
+            auth,
+            remember
+                ? browserLocalPersistence
+                : browserSessionPersistence
+        );
+
+
+        await signInWithEmailAndPassword(
+            auth,
+            email,
+            password
+        );
+
+
+        showMessage(
+            "Login successful. Opening dashboard...",
+            "success"
+        );
+
+
+        setTimeout(() => {
+
+            window.location.href =
+                "dashboard.html";
+
+        }, 700);
+
+
+    } catch (error) {
+
+        console.error(error);
+
+        let text = "Unable to login.";
+
+        if (
+            error.code ===
+            "auth/invalid-credential"
+        ) {
+            text =
+                "Incorrect email or password.";
+        }
+
+        if (
+            error.code ===
+            "auth/user-not-found"
+        ) {
+            text =
+                "No account was found with this email.";
+        }
+
+        if (
+            error.code ===
+            "auth/wrong-password"
+        ) {
+            text =
+                "Incorrect password.";
+        }
+
+        if (
+            error.code ===
+            "auth/invalid-email"
+        ) {
+            text =
+                "Please enter a valid email.";
+        }
+
+        showMessage(text, "error");
+
+        button.disabled = false;
+        button.textContent = "Login";
+
+    }
+
+});
+
+
+document
+    .getElementById("forgot")
+    .addEventListener("click", async (e) => {
+
+        e.preventDefault();
+
+        const email =
+            document.getElementById("email").value.trim();
+
+
+        if (!email) {
+
+            showMessage(
+                "Enter your email address first.",
+                "error"
+            );
+
+            return;
+        }
+
+
+        try {
+
+            await sendPasswordResetEmail(
+                auth,
+                email
+            );
+
+            showMessage(
+                "Password reset email sent. Check your inbox.",
+                "success"
+            );
+
+        } catch (error) {
+
+            showMessage(
+                "Unable to send password reset email.",
+                "error"
+            );
+
+        }
+
+    });
+
+</script>
+
+</body>
+</html>
