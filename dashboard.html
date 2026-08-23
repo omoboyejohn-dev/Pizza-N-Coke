@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Dashboard | Pizza N Coke</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <link rel="stylesheet" href="style.css">
+    <title>
+        Dashboard | Pizza N Coke
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
 
     <style>
 
@@ -15,110 +25,159 @@
             background: #050505;
         }
 
+
         .dashboard {
             min-height: 100vh;
         }
 
+
+        /* HEADER */
+
         .dashboard-header {
+
             position: sticky;
             top: 0;
             z-index: 100;
 
-            background: rgba(5,5,5,.94);
+            background: rgba(5,5,5,.95);
+
             backdrop-filter: blur(15px);
 
-            border-bottom: 1px solid rgba(255,255,255,.1);
+            border-bottom:
+                1px solid rgba(255,255,255,.1);
         }
 
+
         .dashboard-nav {
+
             min-height: 75px;
 
             display: flex;
+
             align-items: center;
+
             justify-content: space-between;
         }
 
+
         .dash-logo {
+
             font-size: 25px;
+
             font-weight: 900;
         }
+
 
         .dash-logo b {
             color: #ffd21c;
         }
 
+
         .dash-logo span {
             color: #35a7ff;
         }
 
+
         .user-area {
+
             display: flex;
+
             align-items: center;
+
             gap: 12px;
         }
 
+
         .user-avatar {
+
             width: 42px;
             height: 42px;
 
             display: flex;
+
             align-items: center;
             justify-content: center;
 
             border-radius: 50%;
 
             background: #ffd21c;
+
             color: #000;
 
             font-weight: 900;
         }
 
+
         .username-small {
+
             font-size: 13px;
+
             font-weight: 800;
         }
 
+
         .logout-btn {
+
             margin-left: 10px;
 
             padding: 9px 15px;
 
-            border: 1px solid rgba(255,255,255,.15);
+            border:
+                1px solid rgba(255,255,255,.15);
+
             border-radius: 9px;
 
             background: transparent;
+
             color: white;
 
             cursor: pointer;
         }
 
+
+        /* MAIN */
+
         .dashboard-main {
+
             padding: 40px 0 80px;
         }
 
+
         .welcome {
+
             margin-bottom: 25px;
         }
 
+
         .welcome small {
+
             color: #ffd21c;
+
             font-weight: 800;
         }
 
+
         .welcome h1 {
+
             margin-top: 4px;
 
-            font-size: clamp(28px,4vw,45px);
+            font-size:
+                clamp(28px,4vw,45px);
         }
 
+
         .welcome h1 span {
+
             color: #35a7ff;
         }
+
 
         /* WALLET */
 
         .wallet-card {
+
             position: relative;
+
             overflow: hidden;
 
             padding: 30px;
@@ -132,17 +191,21 @@
                     #07101b
                 );
 
-            border: 1px solid rgba(0,125,255,.35);
+            border:
+                1px solid rgba(0,125,255,.35);
 
             margin-bottom: 25px;
         }
 
+
         .wallet-card::after {
+
             content: "🍕";
 
             position: absolute;
 
             right: 25px;
+
             bottom: -25px;
 
             font-size: 130px;
@@ -150,41 +213,79 @@
             opacity: .08;
         }
 
+
         .wallet-label {
+
             color: #aab4c2;
+
             font-size: 13px;
         }
 
+
         .wallet-balance {
-            font-size: clamp(35px,5vw,55px);
+
+            font-size:
+                clamp(35px,5vw,55px);
 
             font-weight: 900;
 
             margin: 5px 0 20px;
         }
 
+
+        .bonus-text {
+
+            display: inline-block;
+
+            margin-bottom: 18px;
+
+            padding: 7px 12px;
+
+            border-radius: 20px;
+
+            background:
+                rgba(255,210,28,.12);
+
+            color: #ffd21c;
+
+            font-size: 12px;
+
+            font-weight: 800;
+        }
+
+
         .wallet-actions {
+
             display: flex;
+
             gap: 10px;
+
             flex-wrap: wrap;
         }
 
+
         .add-funds {
+
             padding: 12px 22px;
 
             background: #ffd21c;
+
             color: #000;
 
             border: none;
+
             border-radius: 10px;
 
             font-weight: 900;
+
             cursor: pointer;
         }
+
 
         /* QUICK ACTIONS */
 
         .quick-grid {
+
             display: grid;
 
             grid-template-columns:
@@ -195,62 +296,90 @@
             margin-bottom: 45px;
         }
 
+
         .quick-card {
+
             padding: 18px 8px;
 
             text-align: center;
 
             background: #0b111a;
 
-            border: 1px solid rgba(255,255,255,.1);
+            border:
+                1px solid rgba(255,255,255,.1);
 
             border-radius: 15px;
 
             transition: .2s;
+
+            color: white;
+
+            text-decoration: none;
         }
 
+
         .quick-card:hover {
+
             border-color: #087cff;
+
             transform: translateY(-3px);
         }
 
+
         .quick-icon {
+
             font-size: 25px;
+
             margin-bottom: 6px;
         }
 
+
         .quick-card span {
+
             display: block;
 
             font-size: 11px;
+
             font-weight: 700;
         }
 
-        /* PLAN SECTION */
+
+        /* PLANS */
 
         .section-title {
+
             display: flex;
 
             justify-content: space-between;
+
             align-items: end;
 
             margin-bottom: 20px;
         }
 
+
         .section-title h2 {
+
             font-size: 27px;
         }
 
+
         .section-title h2 span {
+
             color: #ffd21c;
         }
 
+
         .section-title p {
+
             color: #8994a2;
+
             font-size: 13px;
         }
 
+
         .plans-grid {
+
             display: grid;
 
             grid-template-columns:
@@ -259,7 +388,9 @@
             gap: 18px;
         }
 
+
         .plan-card {
+
             padding: 24px 18px;
 
             background:
@@ -269,34 +400,47 @@
                     #06090d
                 );
 
-            border: 1px solid rgba(255,210,28,.22);
+            border:
+                1px solid rgba(255,210,28,.22);
 
             border-radius: 18px;
 
             transition: .25s;
         }
 
+
         .plan-card:hover {
+
             transform: translateY(-5px);
+
             border-color: #ffd21c;
         }
 
+
         .plan-name {
+
             color: #ffd21c;
 
             font-size: 12px;
+
             font-weight: 900;
         }
 
+
         .plan-price {
+
             margin-top: 10px;
 
             font-size: 27px;
+
             font-weight: 900;
         }
 
+
         .plan-info {
+
             display: grid;
+
             gap: 7px;
 
             margin: 15px 0;
@@ -306,19 +450,25 @@
             font-size: 12px;
         }
 
+
         .plan-info strong {
+
             color: white;
         }
 
+
         .buy-btn {
+
             width: 100%;
 
             padding: 11px;
 
             border: none;
+
             border-radius: 9px;
 
             background: #ffd21c;
+
             color: #000;
 
             font-weight: 900;
@@ -326,66 +476,84 @@
             cursor: pointer;
         }
 
+
         .buy-btn:hover {
+
             background: white;
         }
 
-        .loading {
-            padding: 50px;
-            text-align: center;
-            color: #8c96a2;
-        }
 
         @media(max-width:1000px) {
 
             .quick-grid {
+
                 grid-template-columns:
                     repeat(4,1fr);
             }
 
+
             .plans-grid {
+
                 grid-template-columns:
                     repeat(2,1fr);
             }
 
         }
 
+
         @media(max-width:600px) {
 
             .dashboard-main {
+
                 padding-top: 25px;
             }
 
+
             .username-small {
+
                 display: none;
             }
 
+
             .logout-btn {
+
                 padding: 8px 10px;
             }
 
+
             .quick-grid {
+
                 grid-template-columns:
                     repeat(4,1fr);
             }
 
+
             .quick-card {
+
                 padding: 13px 5px;
             }
 
+
             .quick-icon {
+
                 font-size: 20px;
             }
 
+
             .quick-card span {
+
                 font-size: 9px;
             }
 
+
             .plans-grid {
+
                 grid-template-columns: 1fr;
             }
 
+
             .wallet-card {
+
                 padding: 24px;
             }
 
@@ -395,21 +563,31 @@
 
 </head>
 
+
 <body>
+
 
 <div class="dashboard">
 
+
+    <!-- HEADER -->
 
     <header class="dashboard-header">
 
         <div class="container dashboard-nav">
 
+
             <div class="dash-logo">
-                Pizza 🍕 <b>N</b> <span>Coke</span>
+
+                Pizza 🍕
+                <b>N</b>
+                <span>Coke</span>
+
             </div>
 
 
             <div class="user-area">
+
 
                 <div
                     id="avatar"
@@ -418,12 +596,14 @@
                     ?
                 </div>
 
+
                 <div
                     id="topUsername"
                     class="username-small"
                 >
                     Loading...
                 </div>
+
 
                 <button
                     id="logoutBtn"
@@ -432,14 +612,19 @@
                     Logout
                 </button>
 
+
             </div>
+
 
         </div>
 
     </header>
 
 
+    <!-- MAIN -->
+
     <main class="dashboard-main">
+
 
         <div class="container">
 
@@ -452,12 +637,17 @@
                     WELCOME BACK
                 </small>
 
+
                 <h1>
+
                     Hello,
+
                     <span id="username">
                         Customer
                     </span>
+
                     👋
+
                 </h1>
 
             </div>
@@ -467,27 +657,49 @@
 
             <div class="wallet-card">
 
+
                 <div class="wallet-label">
+
                     Available Balance
+
                 </div>
+
 
                 <div
                     id="walletBalance"
                     class="wallet-balance"
                 >
+
                     ₦0.00
+
                 </div>
+
+
+                <div
+                    id="bonusText"
+                    class="bonus-text"
+                >
+
+                    🎁 ₦2,000 Welcome Bonus
+
+                </div>
+
 
                 <div class="wallet-actions">
 
+
                     <button
                         class="add-funds"
-                        onclick="alert('Add Funds page will be connected next.')"
+                        id="addFundsBtn"
                     >
+
                         + Add Funds
+
                     </button>
 
+
                 </div>
+
 
             </div>
 
@@ -496,40 +708,118 @@
 
             <div class="quick-grid">
 
-                <a href="#" class="quick-card">
-                    <div class="quick-icon">👤</div>
-                    <span>Profile</span>
+
+                <a
+                    href="#"
+                    class="quick-card"
+                >
+
+                    <div class="quick-icon">
+                        👤
+                    </div>
+
+                    <span>
+                        Profile
+                    </span>
+
                 </a>
 
-                <a href="#" class="quick-card">
-                    <div class="quick-icon">🏦</div>
-                    <span>Add Bank</span>
+
+                <a
+                    href="#"
+                    class="quick-card"
+                >
+
+                    <div class="quick-icon">
+                        🏦
+                    </div>
+
+                    <span>
+                        Add Bank
+                    </span>
+
                 </a>
 
-                <a href="#" class="quick-card">
-                    <div class="quick-icon">💸</div>
-                    <span>Withdraw</span>
+
+                <a
+                    href="#"
+                    class="quick-card"
+                >
+
+                    <div class="quick-icon">
+                        💸
+                    </div>
+
+                    <span>
+                        Withdraw
+                    </span>
+
                 </a>
 
-                <a href="#" class="quick-card">
-                    <div class="quick-icon">📜</div>
-                    <span>History</span>
+
+                <a
+                    href="#"
+                    class="quick-card"
+                >
+
+                    <div class="quick-icon">
+                        📜
+                    </div>
+
+                    <span>
+                        History
+                    </span>
+
                 </a>
 
-                <a href="#" class="quick-card">
-                    <div class="quick-icon">👥</div>
-                    <span>Group Chat</span>
+
+                <a
+                    href="#"
+                    class="quick-card"
+                >
+
+                    <div class="quick-icon">
+                        👥
+                    </div>
+
+                    <span>
+                        Group Chat
+                    </span>
+
                 </a>
 
-                <a href="#" class="quick-card">
-                    <div class="quick-icon">🎧</div>
-                    <span>Support</span>
+
+                <a
+                    href="#"
+                    class="quick-card"
+                >
+
+                    <div class="quick-icon">
+                        🎧
+                    </div>
+
+                    <span>
+                        Customer Support
+                    </span>
+
                 </a>
 
-                <a href="#" class="quick-card">
-                    <div class="quick-icon">🎁</div>
-                    <span>Referral</span>
+
+                <a
+                    href="#"
+                    class="quick-card"
+                >
+
+                    <div class="quick-icon">
+                        🎁
+                    </div>
+
+                    <span>
+                        Referral
+                    </span>
+
                 </a>
+
 
             </div>
 
@@ -541,12 +831,20 @@
                 <div>
 
                     <h2>
+
                         Choose Your
-                        <span>Plan</span>
+                        <span>
+                            Pizza N Coke Plan
+                        </span>
+
                     </h2>
 
+
                     <p>
-                        Review each plan before making a purchase.
+
+                        Choose a plan and start earning
+                        according to its terms.
+
                     </p>
 
                 </div>
@@ -557,13 +855,7 @@
             <div
                 id="plansGrid"
                 class="plans-grid"
-            >
-
-                <div class="loading">
-                    Loading plans...
-                </div>
-
-            </div>
+            ></div>
 
 
         </div>
@@ -580,10 +872,12 @@ import {
     db
 } from "./firebase-config.js";
 
+
 import {
     onAuthStateChanged,
     signOut
 } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+
 
 import {
     doc,
@@ -594,43 +888,67 @@ import {
 const usernameElement =
     document.getElementById("username");
 
+
 const topUsername =
     document.getElementById("topUsername");
 
+
 const avatar =
     document.getElementById("avatar");
+
 
 const walletBalance =
     document.getElementById("walletBalance");
 
 
-/* ================= AUTH CHECK ================= */
-
-onAuthStateChanged(auth, async (user) => {
-
-    if (!user) {
-
-        window.location.href =
-            "login.html";
-
-        return;
-
-    }
+const bonusText =
+    document.getElementById("bonusText");
 
 
-    try {
+/* =========================
+   CHECK LOGIN
+========================= */
 
-        const userRef =
-            doc(db, "users", user.uid);
+onAuthStateChanged(
+    auth,
+    async (user) => {
 
-        const userSnap =
-            await getDoc(userRef);
+        if (!user) {
+
+            window.location.href =
+                "login.html";
+
+            return;
+        }
 
 
-        if (userSnap.exists()) {
+        try {
+
+            const userRef =
+                doc(
+                    db,
+                    "users",
+                    user.uid
+                );
+
+
+            const userSnap =
+                await getDoc(userRef);
+
+
+            if (!userSnap.exists()) {
+
+                console.error(
+                    "User profile not found."
+                );
+
+                return;
+            }
+
 
             const data =
                 userSnap.data();
+
 
             const username =
                 data.username ||
@@ -640,6 +958,7 @@ onAuthStateChanged(auth, async (user) => {
 
             usernameElement.textContent =
                 username;
+
 
             topUsername.textContent =
                 username;
@@ -652,7 +971,9 @@ onAuthStateChanged(auth, async (user) => {
 
 
             const balance =
-                Number(data.walletBalance || 0);
+                Number(
+                    data.walletBalance || 0
+                );
 
 
             walletBalance.textContent =
@@ -665,30 +986,39 @@ onAuthStateChanged(auth, async (user) => {
                     }
                 );
 
-        } else {
 
-            usernameElement.textContent =
-                user.displayName || "Customer";
+            if (
+                data.welcomeBonus === 2000 &&
+                data.welcomeBonusClaimed === true
+            ) {
 
-            topUsername.textContent =
-                user.displayName || "Customer";
+                bonusText.style.display =
+                    "inline-block";
+
+            } else {
+
+                bonusText.style.display =
+                    "none";
+
+            }
+
+
+        } catch (error) {
+
+            console.error(
+                "Dashboard error:",
+                error
+            );
 
         }
 
-
-        loadPlans();
-
-
-    } catch (error) {
-
-        console.error(error);
-
     }
+);
 
-});
 
-
-/* ================= PLANS ================= */
+/* =========================
+   PLANS
+========================= */
 
 const plans = [
 
@@ -762,7 +1092,9 @@ const plans = [
 function formatNaira(amount) {
 
     return "₦" +
-        amount.toLocaleString("en-NG");
+        amount.toLocaleString(
+            "en-NG"
+        );
 
 }
 
@@ -770,119 +1102,191 @@ function formatNaira(amount) {
 function loadPlans() {
 
     const grid =
-        document.getElementById("plansGrid");
+        document.getElementById(
+            "plansGrid"
+        );
+
 
     grid.innerHTML = "";
 
 
-    plans.forEach(plan => {
-
-        const card =
-            document.createElement("div");
-
-        card.className =
-            "plan-card";
+    plans.forEach(
+        (plan) => {
 
 
-        card.innerHTML = `
+            const card =
+                document.createElement(
+                    "div"
+                );
 
-            <div class="plan-name">
-                ${plan.name}
-            </div>
 
-            <div class="plan-price">
-                ${formatNaira(plan.price)}
-            </div>
+            card.className =
+                "plan-card";
 
-            <div class="plan-info">
 
-                <div>
-                    Daily:
-                    <strong>
-                        ${formatNaira(plan.daily)}
-                    </strong>
+            card.innerHTML = `
+
+                <div class="plan-name">
+
+                    ${plan.name}
+
                 </div>
 
-                <div>
-                    Duration:
-                    <strong>
-                        ${plan.days} Days
-                    </strong>
+
+                <div class="plan-price">
+
+                    ${formatNaira(plan.price)}
+
                 </div>
 
-                <div>
-                    Total:
-                    <strong>
-                        ${formatNaira(plan.total)}
-                    </strong>
+
+                <div class="plan-info">
+
+                    <div>
+
+                        Daily:
+
+                        <strong>
+
+                            ${formatNaira(plan.daily)}
+
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        Duration:
+
+                        <strong>
+
+                            ${plan.days} Days
+
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        Total:
+
+                        <strong>
+
+                            ${formatNaira(plan.total)}
+
+                        </strong>
+
+                    </div>
+
                 </div>
 
-            </div>
 
-            <button
-                class="buy-btn"
-                data-plan="${plan.name}"
-            >
-                BUY
-            </button>
+                <button
+                    class="buy-btn"
+                    data-plan="${plan.name}"
+                >
 
-        `;
+                    BUY
+
+                </button>
+
+            `;
 
 
-        grid.appendChild(card);
+            grid.appendChild(card);
 
-    });
+        }
+    );
 
 }
 
 
-/* ================= BUY ================= */
+loadPlans();
 
-document.addEventListener("click", event => {
 
-    if (!event.target.classList.contains("buy-btn")) {
-        return;
+/* =========================
+   BUY BUTTON
+========================= */
+
+document.addEventListener(
+    "click",
+    (event) => {
+
+        if (
+            !event.target.classList.contains(
+                "buy-btn"
+            )
+        ) {
+
+            return;
+        }
+
+
+        const plan =
+            event.target.dataset.plan;
+
+
+        alert(
+            plan +
+            " selected. Purchase system will be connected next."
+        );
+
     }
+);
 
 
-    const plan =
-        event.target.dataset.plan;
-
-
-    alert(
-        plan +
-        " selected. The purchase flow will be connected next."
-    );
-
-});
-
-
-/* ================= LOGOUT ================= */
+/* =========================
+   ADD FUNDS
+========================= */
 
 document
-    .getElementById("logoutBtn")
-    .addEventListener("click", async () => {
-
-        try {
-
-            await signOut(auth);
-
-            window.location.href =
-                "login.html";
-
-        } catch (error) {
-
-            console.error(error);
+    .getElementById("addFundsBtn")
+    .addEventListener(
+        "click",
+        () => {
 
             alert(
-                "Unable to logout. Please try again."
+                "Add Funds system will be connected next."
             );
 
         }
+    );
 
-    });
+
+/* =========================
+   LOGOUT
+========================= */
+
+document
+    .getElementById("logoutBtn")
+    .addEventListener(
+        "click",
+        async () => {
+
+            try {
+
+                await signOut(auth);
+
+                window.location.href =
+                    "login.html";
+
+            } catch (error) {
+
+                console.error(error);
+
+                alert(
+                    "Unable to logout."
+                );
+
+            }
+
+        }
+    );
 
 </script>
 
+
 </body>
-  </html>
+</html>
