@@ -1,363 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
 
-    <title>Login | Pizza N Coke</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
-    <link rel="stylesheet" href="style.css">
+  <title>Login | Pizza N Coke</title>
 
-    <style>
-
-        .login-page {
-            min-height: 100vh;
-
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-
-            background: #050505;
-        }
-
-        .login-left {
-            min-height: 100vh;
-
-            display: flex;
-            align-items: center;
-
-            padding: 60px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(0,0,0,.8),
-                    rgba(0,40,100,.7)
-                ),
-                url("https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=1400&q=85")
-                center/cover;
-        }
-
-        .login-left h1 {
-            font-size: clamp(45px,5vw,75px);
-            line-height: 1;
-            font-weight: 900;
-        }
-
-        .login-left h1 span {
-            color: #ffd21c;
-        }
-
-        .login-left p {
-            max-width: 500px;
-            margin-top: 20px;
-            color: #ddd;
-        }
-
-        .brand {
-            font-size: 30px;
-            font-weight: 900;
-            margin-bottom: 30px;
-        }
-
-        .brand b {
-            color: #ffd21c;
-        }
-
-        .brand span {
-            color: #35a7ff;
-        }
-
-        .login-right {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            padding: 30px;
-        }
-
-        .login-box {
-            width: min(100%,450px);
-
-            padding: 38px;
-
-            background: #0b111a;
-
-            border: 1px solid rgba(0,125,255,.3);
-
-            border-radius: 22px;
-        }
-
-        .login-box h2 {
-            font-size: 33px;
-        }
-
-        .login-box h2 span {
-            color: #ffd21c;
-        }
-
-        .subtitle {
-            color: #929ba7;
-            margin: 8px 0 25px;
-            font-size: 14px;
-        }
-
-        .form-group {
-            margin-bottom: 17px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 7px;
-            font-size: 13px;
-            font-weight: 700;
-        }
-
-        .form-input {
-            width: 100%;
-            padding: 14px;
-
-            background: #070b10;
-            color: white;
-
-            border: 1px solid rgba(255,255,255,.12);
-            border-radius: 11px;
-
-            outline: none;
-        }
-
-        .form-input:focus {
-            border-color: #087cff;
-        }
-
-        .login-options {
-            display: flex;
-            justify-content: space-between;
-            margin: 10px 0 20px;
-
-            font-size: 12px;
-        }
-
-        .remember {
-            color: #999;
-        }
-
-        .remember input {
-            accent-color: #ffd21c;
-        }
-
-        .forgot {
-            color: #ffd21c;
-        }
-
-        .login-btn-main {
-            width: 100%;
-
-            padding: 15px;
-
-            border: none;
-            border-radius: 11px;
-
-            background: #ffd21c;
-            color: #000;
-
-            font-weight: 900;
-
-            cursor: pointer;
-        }
-
-        .login-btn-main:disabled {
-            opacity: .6;
-        }
-
-        .message {
-            display: none;
-
-            padding: 12px;
-            margin-bottom: 15px;
-
-            border-radius: 10px;
-
-            font-size: 13px;
-        }
-
-        .message.show {
-            display: block;
-        }
-
-        .message.error {
-            background: rgba(255,50,50,.1);
-            color: #ff7777;
-        }
-
-        .message.success {
-            background: rgba(30,200,100,.1);
-            color: #55df91;
-        }
-
-        .switch {
-            text-align: center;
-            margin-top: 22px;
-
-            color: #929ba7;
-            font-size: 13px;
-        }
-
-        .switch a {
-            color: #ffd21c;
-            font-weight: 800;
-        }
-
-        @media(max-width:800px) {
-
-            .login-page {
-                grid-template-columns: 1fr;
-            }
-
-            .login-left {
-                min-height: 300px;
-                padding: 40px 25px;
-            }
-
-            .login-left h1 {
-                font-size: 42px;
-            }
-
-        }
-
-    </style>
+  <link rel="stylesheet" href="style.css">
 
 </head>
 
-<body>
 
-<div class="login-page">
-
-
-    <section class="login-left">
-
-        <div>
-
-            <div class="brand">
-                Pizza 🍕 <b>N</b> <span>Coke</span>
-            </div>
-
-            <h1>
-                WELCOME
-                <br>
-                <span>BACK.</span>
-            </h1>
-
-            <p>
-                Login to your account and continue to
-                your Pizza N Coke dashboard.
-            </p>
-
-            <div style="font-size:55px;margin-top:25px;">
-                🍕 🥤 ❤️
-            </div>
-
-        </div>
-
-    </section>
+<body class="login-page">
 
 
-    <section class="login-right">
+<div class="login-container">
 
-        <div class="login-box">
-
-            <h2>
-                Welcome <span>Back</span>
-            </h2>
-
-            <p class="subtitle">
-                Login to continue.
-            </p>
-
-            <div id="message" class="message"></div>
+  <div class="login-card">
 
 
-            <form id="loginForm">
+    <div class="pizza-logo">
 
-                <div class="form-group">
+      🍕 🥤
 
-                    <label>Email Address</label>
-
-                    <input
-                        id="email"
-                        class="form-input"
-                        type="email"
-                        placeholder="Enter your email"
-                        required
-                    >
-
-                </div>
+    </div>
 
 
-                <div class="form-group">
+    <div class="logo dark-logo">
 
-                    <label>Password</label>
+      Pizza 🍕
+      <span>N</span>
+      <b>Coke</b>
 
-                    <input
-                        id="password"
-                        class="form-input"
-                        type="password"
-                        placeholder="Enter your password"
-                        required
-                    >
-
-                </div>
+    </div>
 
 
-                <div class="login-options">
+    <h1>
+      Welcome Back
+    </h1>
 
-                    <label class="remember">
-
-                        <input
-                            type="checkbox"
-                            id="remember"
-                        >
-
-                        Remember me
-
-                    </label>
+    <p>
+      Login to your Pizza N Coke account.
+    </p>
 
 
-                    <a
-                        href="#"
-                        class="forgot"
-                        id="forgot"
-                    >
-                        Forgot Password?
-                    </a>
-
-                </div>
+    <div
+      id="message"
+      class="message"
+    ></div>
 
 
-                <button
-                    id="loginBtn"
-                    class="login-btn-main"
-                    type="submit"
-                >
-                    Login
-                </button>
+    <div class="input-group">
 
-            </form>
+      <label>
+        Gmail
+      </label>
+
+      <input
+        type="email"
+        id="email"
+        placeholder="Enter Gmail"
+      >
+
+    </div>
 
 
-            <div class="switch">
+    <div class="input-group password-box">
 
-                Don't have an account?
+      <label>
+        Password
+      </label>
 
-                <a href="register.html">
-                    Create Account
-                </a>
+      <input
+        type="password"
+        id="password"
+        placeholder="Enter password"
+      >
 
-            </div>
+      <button
+        type="button"
+        onclick="togglePassword()"
+      >
+        👁
+      </button>
 
-        </div>
+    </div>
 
-    </section>
+
+    <button
+      id="loginBtn"
+      class="next-button"
+    >
+
+      LOG IN
+
+    </button>
+
+
+    <p class="login-link">
+
+      Don't have an account?
+
+      <a href="register.html">
+        CREATE ACCOUNT
+      </a>
+
+    </p>
+
+
+  </div>
 
 </div>
 
@@ -365,178 +122,111 @@
 <script type="module">
 
 import {
-    auth
+  auth
 } from "./firebase-config.js";
 
 import {
-    signInWithEmailAndPassword,
-    sendPasswordResetEmail,
-    setPersistence,
-    browserLocalPersistence,
-    browserSessionPersistence
+  signInWithEmailAndPassword
 } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 
 
-const form =
-    document.getElementById("loginForm");
+const email =
+  document.getElementById("email");
+
+const password =
+  document.getElementById("password");
+
+const loginBtn =
+  document.getElementById("loginBtn");
 
 const message =
-    document.getElementById("message");
-
-const button =
-    document.getElementById("loginBtn");
+  document.getElementById("message");
 
 
-function showMessage(text, type) {
+loginBtn.addEventListener(
+  "click",
+  async () => {
 
-    message.textContent = text;
-    message.className = "message show " + type;
+    const mail =
+      email.value.trim();
 
-}
-
-
-form.addEventListener("submit", async (e) => {
-
-    e.preventDefault();
-
-    const email =
-        document.getElementById("email").value.trim();
-
-    const password =
-        document.getElementById("password").value;
-
-    const remember =
-        document.getElementById("remember").checked;
+    const pass =
+      password.value;
 
 
-    button.disabled = true;
-    button.textContent = "Logging in...";
+    if (!mail || !pass) {
+
+      showMessage(
+        "Enter your Gmail and password.",
+        "error"
+      );
+
+      return;
+
+    }
+
+
+    loginBtn.disabled = true;
+
+    loginBtn.textContent =
+      "LOGGING IN...";
 
 
     try {
 
-        await setPersistence(
-            auth,
-            remember
-                ? browserLocalPersistence
-                : browserSessionPersistence
-        );
+      await signInWithEmailAndPassword(
+        auth,
+        mail,
+        pass
+      );
 
 
-        await signInWithEmailAndPassword(
-            auth,
-            email,
-            password
-        );
-
-
-        showMessage(
-            "Login successful. Opening dashboard...",
-            "success"
-        );
-
-
-        setTimeout(() => {
-
-            window.location.href =
-                "dashboard.html";
-
-        }, 700);
+      window.location.href =
+        "dashboard.html";
 
 
     } catch (error) {
 
-        console.error(error);
+      console.error(error);
 
-        let text = "Unable to login.";
+      showMessage(
+        "Login failed. Check your Gmail and password.",
+        "error"
+      );
 
-        if (
-            error.code ===
-            "auth/invalid-credential"
-        ) {
-            text =
-                "Incorrect email or password.";
-        }
+      loginBtn.disabled = false;
 
-        if (
-            error.code ===
-            "auth/user-not-found"
-        ) {
-            text =
-                "No account was found with this email.";
-        }
-
-        if (
-            error.code ===
-            "auth/wrong-password"
-        ) {
-            text =
-                "Incorrect password.";
-        }
-
-        if (
-            error.code ===
-            "auth/invalid-email"
-        ) {
-            text =
-                "Please enter a valid email.";
-        }
-
-        showMessage(text, "error");
-
-        button.disabled = false;
-        button.textContent = "Login";
+      loginBtn.textContent =
+        "LOG IN";
 
     }
 
-});
+  }
+);
 
 
-document
-    .getElementById("forgot")
-    .addEventListener("click", async (e) => {
+function showMessage(text, type) {
 
-        e.preventDefault();
+  message.textContent = text;
 
-        const email =
-            document.getElementById("email").value.trim();
+  message.className =
+    "message " + type;
 
-
-        if (!email) {
-
-            showMessage(
-                "Enter your email address first.",
-                "error"
-            );
-
-            return;
-        }
+}
 
 
-        try {
+window.togglePassword = function() {
 
-            await sendPasswordResetEmail(
-                auth,
-                email
-            );
+  password.type =
+    password.type === "password"
+      ? "text"
+      : "password";
 
-            showMessage(
-                "Password reset email sent. Check your inbox.",
-                "success"
-            );
-
-        } catch (error) {
-
-            showMessage(
-                "Unable to send password reset email.",
-                "error"
-            );
-
-        }
-
-    });
+};
 
 </script>
 
+
 </body>
+
 </html>
