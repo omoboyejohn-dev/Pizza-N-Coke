@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Referral | Pizza N Coke</title>
+
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<header class="dashboard-header">
+
+  <div class="dashboard-nav">
+
+    <div class="logo">
+      Pizza 🍕 <span>N</span> <b>Coke</b>
+    </div>
+
+    <a
+      href="dashboard.html"
+      class="logout-button"
+    >
+      Dashboard
+    </a>
+
+  </div>
+
+</header>
+
+
+<main class="page-container">
+
+  <div class="page-card">
+
+    <div class="plans-heading">
+
+      <h2>
+        Referral
+      </h2>
+
+      <p>
+        Share your referral code with people you invite.
+      </p>
+
+    </div>
+
+
+    <div class="input-group">
+
+      <label>
+        Your Referral Code
+      </label>
+
+      <input
+        id="referralCode"
+        type="text"
+        readonly
+      >
+
+    </div>
+
+
+    <button
+      id="copyBtn"
+      class="next-button"
+    >
+      COPY REFERRAL CODE
+    </button>
+
+
+    <div
+      id="message"
+      class="message"
+    ></div>
+
+
+    <div
+      class="plan-card"
+      style="margin-top:25px;"
+    >
+
+      <div class="plan-number">
+        REFERRAL PROGRAM
+      </div>
+
+      <p
+        style="
+          margin-top:10px;
+          color:#7c8797;
+          line-height:1.6;
+        "
+      >
+        Invite customers using your referral
+        code. Any referral rewards should be
+        calculated and approved through secure
+        server-side logic.
+      </p>
+
+    </div>
+
+  </div>
+
+</main>
+
+
+<script type="module">
+
+import {
+  auth,
+  db
+} from "./firebase-config.js";
+
+
+import {
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+
+
+import {
+  doc,
+  getDoc
+} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+
+
+const referralCode =
+  document.getElementById("referralCode");
+
+
+const message =
+  document.getElementById("message");
+
+
+onAuthStateChanged(auth, async (user) => {
+
+  if (!user) {
+
+    location.href = "login.html";
+
+    return;
+
+  }
+
+
+  const snap =
+    await getDoc(
+      doc(db, "users", user.uid)
+    );
+
+
+  if (snap.exists()) {
+
+    referralCode.value =
+      snap.data().referralCode ||
+      user.uid.substring(0, 8);
+
+  } else {
+
+    referralCode.value =
+      user.uid.substring(0, 8);
+
+  }
+
+});
+
+
+document
+  .getElementById("copyBtn")
+  .addEventListener("click", async () => {
+
+    try {
+
+      await navigator.clipboard.writeText(
+        referralCode.value
+      );
+
+
+      message.textContent =
+        "Referral code copied.";
+
+      message.className =
+        "message success";
+
+
+    } catch (error) {
+
+      message.textContent =
+        "Unable to copy. Please copy it manually.";
+
+      message.className =
+        "message error";
+
+    }
+
+  });
+
+</script>
+
+</body>
+</html>
