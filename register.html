@@ -1,312 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Create Account | Pizza N Coke</title>
+  <title>Create Account | Pizza N Coke</title>
 
-    <link rel="stylesheet" href="style.css">
-
-    <style>
-        .auth-page {
-            min-height: 100vh;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            background: #050505;
-        }
-
-        .auth-left {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 60px;
-            background:
-                linear-gradient(135deg, rgba(0,0,0,.78), rgba(0,55,130,.72)),
-                url("https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1400&q=85")
-                center/cover;
-        }
-
-        .auth-brand {
-            font-size: 30px;
-            font-weight: 900;
-            margin-bottom: 30px;
-        }
-
-        .auth-brand b {
-            color: #ffd21c;
-        }
-
-        .auth-brand span {
-            color: #35a7ff;
-        }
-
-        .auth-left h1 {
-            font-size: clamp(45px, 5vw, 75px);
-            line-height: 1;
-            font-weight: 900;
-        }
-
-        .auth-left h1 span {
-            color: #ffd21c;
-        }
-
-        .auth-left p {
-            max-width: 500px;
-            margin-top: 20px;
-            color: #ddd;
-        }
-
-        .auth-right {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 30px;
-        }
-
-        .auth-box {
-            width: min(100%, 450px);
-            padding: 35px;
-            background: #0b111a;
-            border: 1px solid rgba(0,125,255,.3);
-            border-radius: 22px;
-        }
-
-        .auth-box h2 {
-            font-size: 32px;
-        }
-
-        .auth-box h2 span {
-            color: #ffd21c;
-        }
-
-        .subtitle {
-            color: #929ba7;
-            margin: 8px 0 25px;
-            font-size: 14px;
-        }
-
-        .form-group {
-            margin-bottom: 16px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 7px;
-            font-size: 13px;
-            font-weight: 700;
-        }
-
-        .form-input {
-            width: 100%;
-            padding: 14px;
-            border-radius: 11px;
-            border: 1px solid rgba(255,255,255,.12);
-            background: #070b10;
-            color: white;
-            outline: none;
-            box-sizing: border-box;
-        }
-
-        .form-input:focus {
-            border-color: #087cff;
-        }
-
-        .auth-submit {
-            width: 100%;
-            padding: 15px;
-            border: none;
-            border-radius: 11px;
-            background: #ffd21c;
-            color: #000;
-            font-weight: 900;
-            cursor: pointer;
-        }
-
-        .auth-submit:disabled {
-            opacity: .6;
-        }
-
-        .message {
-            display: none;
-            padding: 12px;
-            margin-bottom: 15px;
-            border-radius: 10px;
-            font-size: 13px;
-        }
-
-        .message.show {
-            display: block;
-        }
-
-        .message.error {
-            background: rgba(255,50,50,.1);
-            color: #ff7777;
-        }
-
-        .message.success {
-            background: rgba(30,200,100,.1);
-            color: #55df91;
-        }
-
-        .auth-switch {
-            margin-top: 20px;
-            text-align: center;
-            color: #929ba7;
-            font-size: 13px;
-        }
-
-        .auth-switch a {
-            color: #ffd21c;
-            font-weight: 800;
-        }
-
-        @media(max-width:800px) {
-            .auth-page {
-                grid-template-columns: 1fr;
-            }
-
-            .auth-left {
-                min-height: 300px;
-                padding: 40px 25px;
-            }
-
-            .auth-left h1 {
-                font-size: 42px;
-            }
-        }
-    </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div class="auth-page">
+<section class="register-hero">
 
-    <section class="auth-left">
+  <div class="container">
 
-        <div>
+    <div class="logo">
+      Pizza 🍕 <span>N</span> <b>Coke</b>
+    </div>
 
-            <div class="auth-brand">
-                Pizza 🍕 <b>N</b> <span>Coke</span>
-            </div>
+    <h1>
+      GOOD FOOD,<br>
+      GREATER REWARDS.
+    </h1>
 
-            <h1>
-                GOOD FOOD.
-                <br>
-                <span>GOOD START.</span>
-            </h1>
+    <p>
+      Create your Pizza N Coke customer account.
+    </p>
 
-            <p>
-                Create your Pizza N Coke account and access
-                your personal dashboard.
-            </p>
+    <div class="hero-tags">
+      <span>✓ DAILY ACTIVITY</span>
+      <span>✓ COMMUNITY</span>
+      <span>✓ REWARDS</span>
+    </div>
 
-            <div style="font-size:55px;margin-top:25px;">
-                🍕 🥤 🍕
-            </div>
+  </div>
 
-        </div>
-
-    </section>
+</section>
 
 
-    <section class="auth-right">
+<div class="register-container">
 
-        <div class="auth-box">
+  <div class="register-card">
 
-            <h2>
-                Create <span>Account</span>
-            </h2>
+    <div class="register-title">
 
-            <p class="subtitle">
-                Register to continue.
-            </p>
+      <div class="yellow-title">
+        CREATE YOUR ACCOUNT
+      </div>
 
-            <div id="message" class="message"></div>
+      <h2>Join Pizza N Coke</h2>
 
-            <form id="registerForm">
+      <p>
+        Start your journey today.
+      </p>
 
-                <div class="form-group">
-                    <label>Full Name</label>
+    </div>
 
-                    <input
-                        id="fullName"
-                        class="form-input"
-                        type="text"
-                        placeholder="Enter your full name"
-                        required
-                    >
-                </div>
 
-                <div class="form-group">
-                    <label>Username</label>
+    <div id="message" class="message"></div>
 
-                    <input
-                        id="username"
-                        class="form-input"
-                        type="text"
-                        placeholder="Choose a username"
-                        minlength="3"
-                        required
-                    >
-                </div>
 
-                <div class="form-group">
-                    <label>Email Address</label>
+    <!-- USERNAME -->
 
-                    <input
-                        id="email"
-                        class="form-input"
-                        type="email"
-                        placeholder="Enter your email"
-                        required
-                    >
-                </div>
+    <div class="input-group">
 
-                <div class="form-group">
-                    <label>Password</label>
+      <label>Username</label>
 
-                    <input
-                        id="password"
-                        class="form-input"
-                        type="password"
-                        placeholder="Create password"
-                        minlength="6"
-                        required
-                    >
-                </div>
+      <input
+        type="text"
+        id="username"
+        placeholder="Enter username"
+      >
 
-                <div class="form-group">
-                    <label>Confirm Password</label>
+    </div>
 
-                    <input
-                        id="confirmPassword"
-                        class="form-input"
-                        type="password"
-                        placeholder="Confirm password"
-                        minlength="6"
-                        required
-                    >
-                </div>
 
-                <button
-                    id="registerBtn"
-                    class="auth-submit"
-                    type="submit"
-                >
-                    Create Account
-                </button>
+    <!-- EMAIL -->
 
-            </form>
+    <div class="input-group">
 
-            <div class="auth-switch">
-                Already have an account?
-                <a href="login.html">Login</a>
-            </div>
+      <label>Gmail</label>
 
-        </div>
+      <input
+        type="email"
+        id="email"
+        placeholder="Enter Gmail"
+      >
 
-    </section>
+    </div>
+
+
+    <!-- REFERRAL -->
+
+    <div class="input-group">
+
+      <label>Referral Code</label>
+
+      <input
+        type="text"
+        id="referral"
+        placeholder="Enter referral code"
+      >
+
+    </div>
+
+
+    <!-- PASSWORD -->
+
+    <div class="input-group password-box">
+
+      <label>Password</label>
+
+      <input
+        type="password"
+        id="password"
+        placeholder="Create password"
+      >
+
+      <button
+        type="button"
+        onclick="togglePassword('password')"
+      >
+        👁
+      </button>
+
+    </div>
+
+
+    <!-- CONFIRM PASSWORD -->
+
+    <div class="input-group password-box">
+
+      <label>Confirm Password</label>
+
+      <input
+        type="password"
+        id="confirmPassword"
+        placeholder="Confirm password"
+      >
+
+      <button
+        type="button"
+        onclick="togglePassword('confirmPassword')"
+      >
+        👁
+      </button>
+
+    </div>
+
+
+    <button
+      id="registerBtn"
+      class="next-button"
+    >
+      NEXT →
+    </button>
+
+
+    <p class="login-link">
+
+      Already a member?
+
+      <a href="login.html">
+        LOG IN
+      </a>
+
+    </p>
+
+  </div>
 
 </div>
 
@@ -314,213 +176,172 @@
 <script type="module">
 
 import {
-    auth,
-    db
+  auth,
+  db
 } from "./firebase-config.js";
 
 import {
-    createUserWithEmailAndPassword,
-    updateProfile
+  createUserWithEmailAndPassword,
+  updateProfile
 } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 
 import {
-    doc,
-    setDoc,
-    serverTimestamp
+  doc,
+  setDoc,
+  serverTimestamp
 } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
 
-const form = document.getElementById("registerForm");
-const message = document.getElementById("message");
-const button = document.getElementById("registerBtn");
+const username = document.getElementById("username");
+const email = document.getElementById("email");
+const referral = document.getElementById("referral");
+const password = document.getElementById("password");
+const confirmPassword = document.getElementById("confirmPassword");
+
+const registerBtn =
+  document.getElementById("registerBtn");
+
+const message =
+  document.getElementById("message");
+
+
+registerBtn.addEventListener("click", async () => {
+
+  const user = username.value.trim();
+  const mail = email.value.trim();
+  const ref = referral.value.trim();
+  const pass = password.value;
+  const confirm = confirmPassword.value;
+
+
+  if (!user || !mail || !pass || !confirm) {
+
+    showMessage(
+      "Please complete all required fields.",
+      "error"
+    );
+
+    return;
+  }
+
+
+  if (pass.length < 6) {
+
+    showMessage(
+      "Password must contain at least 6 characters.",
+      "error"
+    );
+
+    return;
+  }
+
+
+  if (pass !== confirm) {
+
+    showMessage(
+      "Passwords do not match.",
+      "error"
+    );
+
+    return;
+  }
+
+
+  registerBtn.disabled = true;
+  registerBtn.textContent = "CREATING ACCOUNT...";
+
+
+  try {
+
+    const credential =
+      await createUserWithEmailAndPassword(
+        auth,
+        mail,
+        pass
+      );
+
+
+    const firebaseUser = credential.user;
+
+
+    await updateProfile(
+      firebaseUser,
+      {
+        displayName: user
+      }
+    );
+
+
+    /*
+      New customers receive the configured
+      welcome balance.
+    */
+
+    await setDoc(
+      doc(db, "users", firebaseUser.uid),
+      {
+
+        username: user,
+
+        email: mail,
+
+        referralCode: ref,
+
+        walletBalance: 2000,
+
+        welcomeBonus: 2000,
+
+        welcomeBonusClaimed: true,
+
+        createdAt: serverTimestamp()
+
+      }
+    );
+
+
+    window.location.href =
+      "dashboard.html";
+
+
+  } catch (error) {
+
+    console.error(error);
+
+    showMessage(
+      "Unable to create account. Check your details and try again.",
+      "error"
+    );
+
+    registerBtn.disabled = false;
+
+    registerBtn.textContent = "NEXT →";
+
+  }
+
+});
 
 
 function showMessage(text, type) {
 
-    message.textContent = text;
-    message.className = "message show " + type;
+  message.textContent = text;
+
+  message.className =
+    "message " + type;
 
 }
 
 
-form.addEventListener("submit", async (e) => {
+window.togglePassword = function(id) {
 
-    e.preventDefault();
+  const input =
+    document.getElementById(id);
 
+  input.type =
+    input.type === "password"
+      ? "text"
+      : "password";
 
-    const fullName =
-        document.getElementById("fullName").value.trim();
-
-    const username =
-        document.getElementById("username").value.trim();
-
-    const email =
-        document.getElementById("email").value.trim();
-
-    const password =
-        document.getElementById("password").value;
-
-    const confirmPassword =
-        document.getElementById("confirmPassword").value;
-
-
-    if (password !== confirmPassword) {
-
-        showMessage(
-            "Passwords do not match.",
-            "error"
-        );
-
-        return;
-    }
-
-
-    button.disabled = true;
-    button.textContent = "Creating Account...";
-
-
-    try {
-
-        /*
-         * CREATE FIREBASE AUTH ACCOUNT
-         */
-
-        const credential =
-            await createUserWithEmailAndPassword(
-                auth,
-                email,
-                password
-            );
-
-
-        const user = credential.user;
-
-
-        /*
-         * SAVE USERNAME TO AUTH PROFILE
-         */
-
-        await updateProfile(user, {
-            displayName: username
-        });
-
-
-        /*
-         * CREATE FIRESTORE USER DOCUMENT
-         *
-         * NEW USERS RECEIVE:
-         *
-         * ₦2,000 WELCOME BONUS
-         */
-
-        await setDoc(
-            doc(db, "users", user.uid),
-            {
-
-                uid: user.uid,
-
-                fullName: fullName,
-
-                username: username,
-
-                email: email,
-
-                walletBalance: 2000,
-
-                welcomeBonus: 2000,
-
-                welcomeBonusClaimed: true,
-
-                referralCode:
-                    username.toUpperCase() +
-                    Math.floor(
-                        1000 + Math.random() * 9000
-                    ),
-
-                createdAt: serverTimestamp()
-
-            }
-        );
-
-
-        showMessage(
-            "Account created! Your ₦2,000 welcome bonus has been added.",
-            "success"
-        );
-
-
-        setTimeout(() => {
-
-            window.location.href =
-                "dashboard.html";
-
-        }, 1200);
-
-
-    } catch (error) {
-
-        console.error(error);
-
-        let text =
-            "Unable to create account.";
-
-
-        if (
-            error.code ===
-            "auth/email-already-in-use"
-        ) {
-
-            text =
-                "This email is already registered.";
-
-        }
-
-
-        if (
-            error.code ===
-            "auth/invalid-email"
-        ) {
-
-            text =
-                "Please enter a valid email address.";
-
-        }
-
-
-        if (
-            error.code ===
-            "auth/weak-password"
-        ) {
-
-            text =
-                "Password must contain at least 6 characters.";
-
-        }
-
-
-        if (
-            error.code ===
-            "permission-denied"
-        ) {
-
-            text =
-                "Firestore permission denied. Check your Firestore rules.";
-
-        }
-
-
-        showMessage(
-            text,
-            "error"
-        );
-
-
-        button.disabled = false;
-        button.textContent = "Create Account";
-
-    }
-
-});
+};
 
 </script>
 
