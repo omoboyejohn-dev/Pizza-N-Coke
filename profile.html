@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Profile | Pizza N Coke</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #000;
+            color: #fff;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .container {
+            width: min(100% - 24px, 700px);
+            margin: auto;
+        }
+
+        .header {
+            border-bottom: 1px solid #181818;
+            background: #050505;
+        }
+
+        .nav {
+            min-height: 82px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 900;
+        }
+
+        .logo b {
+            color: #ffd400;
+        }
+
+        .logo span {
+            color: #168cff;
+        }
+
+        .back {
+            color: #ffd400;
+            font-weight: 800;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 40px 0 70px;
+        }
+
+        .title {
+            margin-bottom: 25px;
+        }
+
+        .title small {
+            color: #ffd400;
+            font-weight: 900;
+        }
+
+        .title h1 {
+            margin: 7px 0 0;
+            font-size: 38px;
+        }
+
+        .card {
+            background: #080f19;
+            border: 1px solid #17283c;
+            border-radius: 22px;
+            padding: 28px;
+            margin-bottom: 20px;
+        }
+
+        .avatar {
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+            background: #ffd400;
+            color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+
+        .field {
+            margin-bottom: 18px;
+        }
+
+        .field label {
+            display: block;
+            color: #aeb8c5;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        .field input {
+            width: 100%;
+            padding: 14px;
+            background: #05080d;
+            color: #fff;
+            border: 1px solid #1d2b3c;
+            border-radius: 11px;
+            outline: none;
+        }
+
+        .field input:focus {
+            border-color: #168cff;
+        }
+
+        .field input:disabled {
+            opacity: .65;
+        }
+
+        .save {
+            width: 100%;
+            padding: 15px;
+            border: 0;
+            border-radius: 11px;
+            background: #ffd400;
+            color: #000;
+            font-weight: 900;
+            cursor: pointer;
+        }
+
+        .message {
+            display: none;
+            padding: 13px;
+            border-radius: 10px;
+            margin-bottom: 18px;
+            font-size: 13px;
+        }
+
+        .message.show {
+            display: block;
+        }
+
+        .success {
+            background: rgba(30, 200, 100, .12);
+            color: #4de58b;
+        }
+
+        .error {
+            background: rgba(255, 50, 50, .12);
+            color: #ff7777;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="header">
+
+    <div class="container nav">
+
+        <div class="logo">
+            Pizza 🍕 <b>N</b> <span>Coke</span>
+        </div>
+
+        <a href="dashboard.html" class="back">
+            ← Dashboard
+        </a>
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <div class="container">
+
+        <div class="title">
+            <small>ACCOUNT</small>
+            <h1>My Profile</h1>
+        </div>
+
+
+        <div class="card">
+
+            <div id="avatar" class="avatar">?</div>
+
+            <div id="message" class="message"></div>
+
+
+            <div class="field">
+
+                <label>Username</label>
+
+                <input
+                    id="username"
+                    type="text"
+                    placeholder="Username"
+                >
+
+            </div>
+
+
+            <div class="field">
+
+                <label>Full Name</label>
+
+                <input
+                    id="fullName"
+                    type="text"
+                    placeholder="Full name"
+                >
+
+            </div>
+
+
+            <div class="field">
+
+                <label>Email Address</label>
+
+                <input
+                    id="email"
+                    type="email"
+                    disabled
+                >
+
+            </div>
+
+
+            <button
+                id="saveBtn"
+                class="save"
+            >
+                Save Changes
+            </button>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<script type="module">
+
+import {
+    auth,
+    db
+} from "./firebase-config.js";
+
+import {
+    onAuthStateChanged,
+    updateProfile
+} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+
+import {
+    doc,
+    getDoc,
+    updateDoc
+} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+
+
+const usernameInput =
+    document.getElementById("username");
+
+const fullNameInput =
+    document.getElementById("fullName");
+
+const emailInput =
+    document.getElementById("email");
+
+const avatar =
+    document.getElementById("avatar");
+
+const message =
+    document.getElementById("message");
+
+const saveBtn =
+    document.getElementById("saveBtn");
+
+
+let currentUser = null;
+
+
+function showMessage(text, type) {
+
+    message.textContent = text;
+    message.className =
+        "message show " + type;
+
+}
+
+
+onAuthStateChanged(auth, async (user) => {
+
+    if (!user) {
+
+        window.location.href =
+            "login.html";
+
+        return;
+    }
+
+    currentUser = user;
+
+    try {
+
+        const ref =
+            doc(db, "users", user.uid);
+
+        const snapshot =
+            await getDoc(ref);
+
+        if (snapshot.exists()) {
+
+            const data = snapshot.data();
+
+            usernameInput.value =
+                data.username || "";
+
+            fullNameInput.value =
+                data.fullName || "";
+
+        }
+
+        emailInput.value =
+            user.email || "";
+
+        const name =
+            usernameInput.value ||
+            user.displayName ||
+            "U";
+
+        avatar.textContent =
+            name.charAt(0).toUpperCase();
+
+    } catch (error) {
+
+        console.error(error);
+
+        showMessage(
+            "Unable to load your profile.",
+            "error"
+        );
+
+    }
+
+});
+
+
+saveBtn.addEventListener("click", async () => {
+
+    if (!currentUser) return;
+
+    const username =
+        usernameInput.value.trim();
+
+    const fullName =
+        fullNameInput.value.trim();
+
+    if (!username || !fullName) {
+
+        showMessage(
+            "Please complete all fields.",
+            "error"
+        );
+
+        return;
+    }
+
+    saveBtn.disabled = true;
+    saveBtn.textContent = "Saving...";
+
+    try {
+
+        await updateDoc(
+            doc(db, "users", currentUser.uid),
+            {
+                username: username,
+                fullName: fullName
+            }
+        );
+
+        await updateProfile(
+            currentUser,
+            {
+                displayName: username
+            }
+        );
+
+        avatar.textContent =
+            username.charAt(0).toUpperCase();
+
+        showMessage(
+            "Profile updated successfully.",
+            "success"
+        );
+
+    } catch (error) {
+
+        console.error(error);
+
+        showMessage(
+            "Unable to save your profile.",
+            "error"
+        );
+
+    }
+
+    saveBtn.disabled = false;
+    saveBtn.textContent = "Save Changes";
+
+});
+
+</script>
+
+</body>
+</html>
