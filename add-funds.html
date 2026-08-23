@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Add Bank | Pizza N Coke</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #000;
+            color: #fff;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .container {
+            width: min(100% - 24px, 650px);
+            margin: auto;
+        }
+
+        .header {
+            background: #050505;
+            border-bottom: 1px solid #181818;
+        }
+
+        .nav {
+            min-height: 82px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 900;
+        }
+
+        .logo b {
+            color: #ffd400;
+        }
+
+        .logo span {
+            color: #168cff;
+        }
+
+        .back {
+            color: #ffd400;
+            text-decoration: none;
+            font-weight: 800;
+        }
+
+        main {
+            padding: 40px 0 70px;
+        }
+
+        .title small {
+            color: #ffd400;
+            font-weight: 900;
+        }
+
+        .title h1 {
+            margin: 8px 0;
+            font-size: 38px;
+        }
+
+        .title p {
+            color: #8996a5;
+        }
+
+        .card {
+            background: #080f19;
+            border: 1px solid #17283c;
+            border-radius: 22px;
+            padding: 28px;
+            margin-top: 25px;
+        }
+
+        .field {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            color: #b4becb;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 14px;
+            background: #05080d;
+            border: 1px solid #1d2b3c;
+            color: #fff;
+            border-radius: 11px;
+            outline: none;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #168cff;
+        }
+
+        .save {
+            width: 100%;
+            padding: 15px;
+            border: 0;
+            border-radius: 11px;
+            background: #ffd400;
+            color: #000;
+            font-weight: 900;
+            cursor: pointer;
+        }
+
+        .message {
+            display: none;
+            padding: 13px;
+            border-radius: 10px;
+            margin-bottom: 18px;
+            font-size: 13px;
+        }
+
+        .message.show {
+            display: block;
+        }
+
+        .success {
+            background: rgba(30, 200, 100, .12);
+            color: #4de58b;
+        }
+
+        .error {
+            background: rgba(255, 50, 50, .12);
+            color: #ff7777;
+        }
+
+        .security {
+            margin-top: 18px;
+            color: #7f8b99;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header class="header">
+
+    <div class="container nav">
+
+        <div class="logo">
+            Pizza 🍕 <b>N</b> <span>Coke</span>
+        </div>
+
+        <a
+            href="dashboard.html"
+            class="back"
+        >
+            ← Dashboard
+        </a>
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <div class="container">
+
+        <div class="title">
+
+            <small>PAYMENT DETAILS</small>
+
+            <h1>
+                Add Bank Account
+            </h1>
+
+            <p>
+                Add your bank details for withdrawal requests.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div
+                id="message"
+                class="message"
+            ></div>
+
+
+            <div class="field">
+
+                <label>
+                    Bank Name
+                </label>
+
+                <select id="bankName">
+
+                    <option value="">
+                        Select your bank
+                    </option>
+
+                    <option>
+                        Access Bank
+                    </option>
+
+                    <option>
+                        Citibank Nigeria
+                    </option>
+
+                    <option>
+                        Ecobank Nigeria
+                    </option>
+
+                    <option>
+                        Fidelity Bank
+                    </option>
+
+                    <option>
+                        First Bank
+                    </option>
+
+                    <option>
+                        First City Monument Bank
+                    </option>
+
+                    <option>
+                        Globus Bank
+                    </option>
+
+                    <option>
+                        GTBank
+                    </option>
+
+                    <option>
+                        Heritage Bank
+                    </option>
+
+                    <option>
+                        Jaiz Bank
+                    </option>
+
+                    <option>
+                        Keystone Bank
+                    </option>
+
+                    <option>
+                        Moniepoint
+                    </option>
+
+                    <option>
+                        Opay
+                    </option>
+
+                    <option>
+                        PalmPay
+                    </option>
+
+                    <option>
+                        Polaris Bank
+                    </option>
+
+                    <option>
+                        Providus Bank
+                    </option>
+
+                    <option>
+                        Stanbic IBTC
+                    </option>
+
+                    <option>
+                        Sterling Bank
+                    </option>
+
+                    <option>
+                        Union Bank
+                    </option>
+
+                    <option>
+                        United Bank for Africa
+                    </option>
+
+                    <option>
+                        Unity Bank
+                    </option>
+
+                    <option>
+                        Wema Bank
+                    </option>
+
+                    <option>
+                        Zenith Bank
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Account Name
+                </label>
+
+                <input
+                    id="accountName"
+                    type="text"
+                    placeholder="Account holder name"
+                >
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Account Number
+                </label>
+
+                <input
+                    id="accountNumber"
+                    type="text"
+                    inputmode="numeric"
+                    maxlength="10"
+                    placeholder="10-digit account number"
+                >
+
+            </div>
+
+
+            <button
+                id="saveBank"
+                class="save"
+            >
+                Save Bank Account
+            </button>
+
+
+            <div class="security">
+
+                🔒 Your bank details are stored in your
+                account profile and should only be used
+                for authorized withdrawal processing.
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<script type="module">
+
+import {
+    auth,
+    db
+} from "./firebase-config.js";
+
+import {
+    onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+
+import {
+    doc,
+    getDoc,
+    setDoc,
+    serverTimestamp
+} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+
+
+const bankName =
+    document.getElementById("bankName");
+
+const accountName =
+    document.getElementById("accountName");
+
+const accountNumber =
+    document.getElementById("accountNumber");
+
+const saveButton =
+    document.getElementById("saveBank");
+
+const message =
+    document.getElementById("message");
+
+
+let currentUser = null;
+
+
+function showMessage(text, type) {
+
+    message.textContent = text;
+
+    message.className =
+        "message show " + type;
+
+}
+
+
+onAuthStateChanged(
+    auth,
+    async (user) => {
+
+        if (!user) {
+
+            window.location.href =
+                "login.html";
+
+            return;
+        }
+
+        currentUser = user;
+
+        try {
+
+            const ref =
+                doc(
+                    db,
+                    "users",
+                    user.uid
+                );
+
+            const snapshot =
+                await getDoc(ref);
+
+            if (
+                snapshot.exists()
+            ) {
+
+                const data =
+                    snapshot.data();
+
+                const bank =
+                    data.bankDetails;
+
+                if (bank) {
+
+                    bankName.value =
+                        bank.bankName || "";
+
+                    accountName.value =
+                        bank.accountName || "";
+
+                    accountNumber.value =
+                        bank.accountNumber || "";
+
+                }
+
+            }
+
+        } catch (error) {
+
+            console.error(error);
+
+        }
+
+    }
+);
+
+
+saveButton.addEventListener(
+    "click",
+    async () => {
+
+        if (!currentUser) return;
+
+
+        const bank =
+            bankName.value.trim();
+
+        const name =
+            accountName.value.trim();
+
+        const number =
+            accountNumber.value.trim();
+
+
+        if (!bank || !name || !number) {
+
+            showMessage(
+                "Please complete all bank details.",
+                "error"
+            );
+
+            return;
+        }
+
+
+        if (!/^\d{10}$/.test(number)) {
+
+            showMessage(
+                "Account number must contain 10 digits.",
+                "error"
+            );
+
+            return;
+        }
+
+
+        saveButton.disabled = true;
+        saveButton.textContent =
+            "Saving...";
+
+
+        try {
+
+            await setDoc(
+                doc(
+                    db,
+                    "users",
+                    currentUser.uid
+                ),
+                {
+                    bankDetails: {
+
+                        bankName: bank,
+
+                        accountName: name,
+
+                        accountNumber: number,
+
+                        updatedAt:
+                            serverTimestamp()
+
+                    }
+                },
+                {
+                    merge: true
+                }
+            );
+
+
+            showMessage(
+                "Bank account saved successfully.",
+                "success"
+            );
+
+
+        } catch (error) {
+
+            console.error(error);
+
+            showMessage(
+                "Unable to save bank account.",
+                "error"
+            );
+
+        }
+
+
+        saveButton.disabled = false;
+
+        saveButton.textContent =
+            "Save Bank Account";
+
+    }
+);
+
+</script>
+
+</body>
+</html>
