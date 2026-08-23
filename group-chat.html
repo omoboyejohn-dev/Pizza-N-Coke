@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Group Chat | Pizza N Coke</title>
+
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<header class="dashboard-header">
+
+  <div class="dashboard-nav">
+
+    <div class="logo">
+      Pizza 🍕 <span>N</span> <b>Coke</b>
+    </div>
+
+    <a
+      href="dashboard.html"
+      class="logout-button"
+    >
+      Dashboard
+    </a>
+
+  </div>
+
+</header>
+
+
+<main class="page-container">
+
+  <div class="page-card">
+
+    <div class="plans-heading">
+
+      <h2>
+        Group Chat 💬
+      </h2>
+
+      <p>
+        Community discussion.
+      </p>
+
+    </div>
+
+
+    <div
+      id="chatMessages"
+      style="
+        margin-top:20px;
+        height:400px;
+        overflow-y:auto;
+        border:1px solid #d9e4f0;
+        border-radius:18px;
+        padding:15px;
+        background:#f7fbff;
+      "
+    >
+
+      <div
+        style="
+          padding:20px;
+          text-align:center;
+          color:#7c8797;
+        "
+      >
+        Loading messages...
+      </div>
+
+    </div>
+
+
+    <div class="input-group">
+
+      <input
+        id="chatInput"
+        type="text"
+        placeholder="Write a message..."
+      >
+
+    </div>
+
+
+    <button
+      id="sendBtn"
+      class="next-button"
+    >
+      SEND MESSAGE
+    </button>
+
+
+    <div
+      id="message"
+      class="message"
+    ></div>
+
+  </div>
+
+</main>
+
+
+<script type="module">
+
+import {
+  auth,
+  db
+} from "./firebase-config.js";
+
+
+import {
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+
+
+import {
+  collection,
+  addDoc,
+  query,
+  orderBy,
+  limit,
+  onSnapshot,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+
+
+let currentUser = null;
+
+
+const chatMessages =
+  document.getElementById("chatMessages");
+
+
+const chatInput =
+  document.getElementById("chatInput");
+
+
+const message =
+  document.getElementById("message");
+
+
+onAuthStateChanged(auth, (user) => {
+
+  if (!user) {
+
+    location.href = "login.html";
+
+    return;
+
+  }
+
+
+  currentUser = user;
+
+
+  loadMessages();
+
+});
+
+
+function loadMessages() {
+
+  const chatQuery =
+    query(
+      collection(db, "groupMessages"),
+      orderBy("createdAt", "asc"),
+      limit(100)
+    );
+
+
+  onSnapshot(
+    chatQuery,
+    (snapshot) => {
+
+      chatMessages.innerHTML = "";
+
+
+      if (snapshot.empty) {
+
+        chatMessages.innerHTML = `
+
+          <div
+            style="
+              text-align:center;
+              padding:30px;
+              color:#7c8797;
+            "
+          >
+            No messages yet. Start the conversation.
+          </div>
+
+        `;
+
+        return;
+
+      }
+
+
+      snapshot.forEach((doc) => {
+
+        const data = doc.data();
+
+
+        const box =
+          document.createElement("div");
+
+
+        box.style.cssText = `
+          background:#ffffff;
+          border:1px solid #d9e4f0;
+          border-radius:14px;
+          padding:12px;
+          margin-bottom:10px;
+        `;
+
+
+        const name =
+          document.createElement("strong");
+
+        name.textContent =
+          data.username || "Member";
+
+
+        const text =
+          document.createElement("div");
+
+        text.textContent =
+          data.message || "";
+
+
+        text.style.cssText = `
+          margin-top:5px;
+          color:#59687c;
+          line-height:1.5;
+        `;
+
+
+        box.appendChild(name);
+
+        box.appendChild(text);
+
+        chatMessages.appendChild(box);
+
+      });
+
+
+      chatMessages.scrollTop =
+        chatMessages.scrollHeight;
+
+    },
+    (error) => {
+
+      console.error(error);
+
+      chatMessages.innerHTML = `
+
+        <div class="message error">
+
+          Unable to load group messages.
+
+        </div>
+
+      `;
+
+    }
+  );
+
+}
+
+
+document
+  .getElementById("sendBtn")
+  .addEventListener("click", sendMessage);
+
+
+chatInput.addEventListener(
+  "keydown",
+  (event) => {
+
+    if (event.key === "Enter") {
+
+      sendMessage();
+
+    }
+
+  }
+);
+
+
+async function sendMessage() {
+
+  const text =
+    chatInput.value.trim();
+
+
+  if (!text || !currentUser) {
+
+    return;
+
+  }
+
+
+  const button =
+    document.getElementById("sendBtn");
+
+
+  button.disabled = true;
+
+
+  try {
+
+    await addDoc(
+      collection(db, "groupMessages"),
+      {
+
+        uid: currentUser.uid,
+
+        username:
+          currentUser.displayName ||
+          "Member",
+
+        message: text,
+
+        createdAt: serverTimestamp()
+
+      }
+    );
+
+
+    chatInput.value = "";
+
+
+  } catch (error) {
+
+    console.error(error);
+
+    message.textContent =
+      "Unable to send message.";
+
+    message.className =
+      "message error";
+
+  }
+
+
+  button.disabled = false;
+
+}
+
+</script>
+
+</body>
+</html>
