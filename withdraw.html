@@ -3,192 +3,16 @@
 
 <head>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
 
-    <title>Withdraw | Pizza N Coke</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
-    <style>
+  <title>Withdraw | Pizza N Coke</title>
 
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            background: #000;
-            color: #fff;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        .container {
-            width: min(100% - 24px, 650px);
-            margin: auto;
-        }
-
-        .header {
-            background: #050505;
-            border-bottom: 1px solid #181818;
-        }
-
-        .nav {
-            min-height: 82px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .logo {
-            font-size: 25px;
-            font-weight: 900;
-        }
-
-        .logo b {
-            color: #ffd400;
-        }
-
-        .logo span {
-            color: #168cff;
-        }
-
-        .back {
-            color: #ffd400;
-            text-decoration: none;
-            font-weight: 800;
-        }
-
-        main {
-            padding: 40px 0 70px;
-        }
-
-        .title small {
-            color: #ffd400;
-            font-weight: 900;
-        }
-
-        .title h1 {
-            margin: 8px 0;
-            font-size: 38px;
-        }
-
-        .title p {
-            color: #8996a5;
-        }
-
-        .balance {
-            background: #071a32;
-            border: 1px solid #0b477f;
-            border-radius: 18px;
-            padding: 22px;
-            margin: 25px 0 18px;
-        }
-
-        .balance-label {
-            color: #9eacbc;
-            font-size: 13px;
-        }
-
-        .balance-value {
-            margin-top: 7px;
-            font-size: 35px;
-            font-weight: 900;
-        }
-
-        .card {
-            background: #080f19;
-            border: 1px solid #17283c;
-            border-radius: 22px;
-            padding: 28px;
-        }
-
-        .field {
-            margin-bottom: 18px;
-        }
-
-        label {
-            display: block;
-            color: #b4becb;
-            font-size: 13px;
-            margin-bottom: 8px;
-        }
-
-        input,
-        select {
-            width: 100%;
-            padding: 14px;
-            background: #05080d;
-            border: 1px solid #1d2b3c;
-            color: #fff;
-            border-radius: 11px;
-            outline: none;
-        }
-
-        input:focus,
-        select:focus {
-            border-color: #168cff;
-        }
-
-        .bank-box {
-            padding: 15px;
-            background: #05080d;
-            border: 1px solid #17283c;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            color: #aab5c2;
-            font-size: 13px;
-            line-height: 1.7;
-        }
-
-        .bank-box strong {
-            color: #fff;
-        }
-
-        .withdraw-button {
-            width: 100%;
-            padding: 15px;
-            border: 0;
-            border-radius: 11px;
-            background: #ffd400;
-            color: #000;
-            font-weight: 900;
-            cursor: pointer;
-        }
-
-        .withdraw-button:disabled {
-            opacity: .6;
-            cursor: not-allowed;
-        }
-
-        .message {
-            display: none;
-            padding: 13px;
-            border-radius: 10px;
-            margin-bottom: 18px;
-            font-size: 13px;
-        }
-
-        .message.show {
-            display: block;
-        }
-
-        .success {
-            background: rgba(30, 200, 100, .12);
-            color: #4de58b;
-        }
-
-        .error {
-            background: rgba(255, 50, 50, .12);
-            color: #ff7777;
-        }
-
-        .notice {
-            margin-top: 18px;
-            color: #7f8b99;
-            font-size: 12px;
-            line-height: 1.6;
-        }
-
-    </style>
+  <link rel="stylesheet" href="style.css">
 
 </head>
 
@@ -196,113 +20,134 @@
 <body>
 
 
-<header class="header">
+<header class="dashboard-header">
 
-    <div class="container nav">
+  <div class="dashboard-nav">
 
-        <div class="logo">
-            Pizza 🍕 <b>N</b> <span>Coke</span>
-        </div>
-
-        <a
-            href="dashboard.html"
-            class="back"
-        >
-            ← Dashboard
-        </a>
-
+    <div class="logo">
+      Pizza 🍕 <span>N</span> <b>Coke</b>
     </div>
+
+    <a
+      href="dashboard.html"
+      class="logout-button"
+    >
+      Dashboard
+    </a>
+
+  </div>
 
 </header>
 
 
-<main>
+<main class="page-container">
 
-    <div class="container">
+  <div class="page-card">
 
-        <div class="title">
+    <div class="plans-heading">
 
-            <small>WALLET</small>
+      <h2>
+        Withdraw
+      </h2>
 
-            <h1>
-                Withdraw
-            </h1>
-
-            <p>
-                Submit a withdrawal request for review.
-            </p>
-
-        </div>
-
-
-        <div class="balance">
-
-            <div class="balance-label">
-                Available Balance
-            </div>
-
-            <div
-                id="balance"
-                class="balance-value"
-            >
-                ₦0.00
-            </div>
-
-        </div>
-
-
-        <div class="card">
-
-            <div
-                id="message"
-                class="message"
-            ></div>
-
-
-            <div
-                id="bankBox"
-                class="bank-box"
-            >
-                Loading bank details...
-            </div>
-
-
-            <div class="field">
-
-                <label>
-                    Withdrawal Amount
-                </label>
-
-                <input
-                    id="amount"
-                    type="number"
-                    min="1"
-                    step="1"
-                    placeholder="Enter amount"
-                >
-
-            </div>
-
-
-            <button
-                id="withdrawButton"
-                class="withdraw-button"
-            >
-                Submit Withdrawal Request
-            </button>
-
-
-            <div class="notice">
-
-                Withdrawal requests are submitted for
-                review. Your balance is not changed by
-                this browser page.
-
-            </div>
-
-        </div>
+      <p>
+        Submit a withdrawal request.
+      </p>
 
     </div>
+
+
+    <div class="plan-card" style="margin-top:20px;">
+
+      <div class="plan-number">
+        AVAILABLE BALANCE
+      </div>
+
+      <div
+        id="balance"
+        class="plan-price"
+      >
+        ₦0.00
+      </div>
+
+    </div>
+
+
+    <div
+      id="message"
+      class="message"
+    ></div>
+
+
+    <div class="input-group">
+
+      <label>
+        Amount
+      </label>
+
+      <input
+        type="number"
+        id="amount"
+        placeholder="Enter withdrawal amount"
+        min="1"
+      >
+
+    </div>
+
+
+    <div class="input-group">
+
+      <label>
+        Bank Name
+      </label>
+
+      <input
+        type="text"
+        id="bankName"
+        placeholder="Enter bank name"
+      >
+
+    </div>
+
+
+    <div class="input-group">
+
+      <label>
+        Account Number
+      </label>
+
+      <input
+        type="text"
+        id="accountNumber"
+        placeholder="Enter account number"
+      >
+
+    </div>
+
+
+    <div class="input-group">
+
+      <label>
+        Account Name
+      </label>
+
+      <input
+        type="text"
+        id="accountName"
+        placeholder="Enter account name"
+      >
+
+    </div>
+
+
+    <button
+      id="withdrawBtn"
+      class="next-button"
+    >
+      REQUEST WITHDRAWAL
+    </button>
+
+  </div>
 
 </main>
 
@@ -310,307 +155,223 @@
 <script type="module">
 
 import {
-    auth,
-    db
+  auth,
+  db
 } from "./firebase-config.js";
 
+
 import {
-    onAuthStateChanged
+  onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 
+
 import {
-    doc,
-    getDoc,
-    collection,
-    addDoc,
-    serverTimestamp
+  doc,
+  getDoc,
+  addDoc,
+  collection,
+  serverTimestamp
 } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
-
-
-const balanceElement =
-    document.getElementById("balance");
-
-const bankBox =
-    document.getElementById("bankBox");
-
-const amountInput =
-    document.getElementById("amount");
-
-const button =
-    document.getElementById("withdrawButton");
-
-const message =
-    document.getElementById("message");
 
 
 let currentUser = null;
 
-let currentBalance = 0;
-
-let bankDetails = null;
+let walletBalance = 0;
 
 
-function formatNaira(amount) {
+function money(value) {
 
-    return "₦" +
-        Number(amount || 0).toLocaleString(
-            "en-NG",
-            {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2
-            }
-        );
+  return "₦" +
+    Number(value || 0).toLocaleString(
+      "en-NG",
+      {
+        minimumFractionDigits: 2
+      }
+    );
 
 }
 
 
-function showMessage(text, type) {
+onAuthStateChanged(auth, async (user) => {
 
-    message.textContent = text;
+  if (!user) {
 
-    message.className =
-        "message show " + type;
+    location.href = "login.html";
 
-}
+    return;
+
+  }
 
 
-function displayBank(bank) {
+  currentUser = user;
 
-    if (!bank) {
 
-        bankBox.innerHTML = `
-            <strong>No bank account added.</strong>
-            <br>
-            Please add your bank account before
-            requesting a withdrawal.
-        `;
+  const snap =
+    await getDoc(
+      doc(db, "users", user.uid)
+    );
 
-        button.disabled = true;
 
-        return;
+  if (snap.exists()) {
+
+    walletBalance =
+      Number(
+        snap.data().walletBalance || 0
+      );
+
+  }
+
+
+  document.getElementById("balance")
+    .textContent =
+      money(walletBalance);
+
+});
+
+
+document
+  .getElementById("withdrawBtn")
+  .addEventListener("click", async () => {
+
+
+    const amount =
+      Number(
+        document.getElementById("amount").value
+      );
+
+
+    const bankName =
+      document.getElementById("bankName")
+        .value.trim();
+
+
+    const accountNumber =
+      document.getElementById("accountNumber")
+        .value.trim();
+
+
+    const accountName =
+      document.getElementById("accountName")
+        .value.trim();
+
+
+    const message =
+      document.getElementById("message");
+
+
+    if (!amount || amount <= 0) {
+
+      message.textContent =
+        "Enter a valid withdrawal amount.";
+
+      message.className =
+        "message error";
+
+      return;
+
+    }
+
+
+    if (amount > walletBalance) {
+
+      message.textContent =
+        "Insufficient available balance.";
+
+      message.className =
+        "message error";
+
+      return;
 
     }
 
 
-    bankDetails = bank;
+    if (
+      !bankName ||
+      !accountNumber ||
+      !accountName
+    ) {
 
+      message.textContent =
+        "Please complete your bank details.";
 
-    bankBox.innerHTML = `
+      message.className =
+        "message error";
 
-        <strong>Withdrawal Account</strong>
-        <br>
-        Bank: ${bank.bankName || "Not provided"}
-        <br>
-        Account Name:
-        ${bank.accountName || "Not provided"}
-        <br>
-        Account Number:
-        ${bank.accountNumber || "Not provided"}
-
-    `;
-
-}
-
-
-onAuthStateChanged(
-    auth,
-    async (user) => {
-
-        if (!user) {
-
-            window.location.href =
-                "login.html";
-
-            return;
-
-        }
-
-
-        currentUser = user;
-
-
-        try {
-
-            const userRef =
-                doc(
-                    db,
-                    "users",
-                    user.uid
-                );
-
-
-            const snapshot =
-                await getDoc(userRef);
-
-
-            if (!snapshot.exists()) {
-
-                showMessage(
-                    "Your account profile could not be found.",
-                    "error"
-                );
-
-                return;
-
-            }
-
-
-            const data =
-                snapshot.data();
-
-
-            currentBalance =
-                Number(
-                    data.walletBalance || 0
-                );
-
-
-            balanceElement.textContent =
-                formatNaira(
-                    currentBalance
-                );
-
-
-            displayBank(
-                data.bankDetails || null
-            );
-
-
-        } catch (error) {
-
-            console.error(error);
-
-            showMessage(
-                "Unable to load your withdrawal information.",
-                "error"
-            );
-
-        }
+      return;
 
     }
-);
 
 
-button.addEventListener(
-    "click",
-    async () => {
+    const button =
+      document.getElementById("withdrawBtn");
 
-        if (!currentUser) return;
+    button.disabled = true;
 
-
-        const amount =
-            Number(
-                amountInput.value
-            );
+    button.textContent =
+      "SUBMITTING...";
 
 
-        if (!bankDetails) {
+    try {
 
-            showMessage(
-                "Please add a bank account first.",
-                "error"
-            );
+      await addDoc(
+        collection(db, "withdrawalRequests"),
+        {
 
-            return;
+          uid: currentUser.uid,
 
-        }
+          email: currentUser.email,
 
+          amount: amount,
 
-        if (!amount || amount <= 0) {
+          bankName: bankName,
 
-            showMessage(
-                "Enter a valid withdrawal amount.",
-                "error"
-            );
+          accountNumber: accountNumber,
 
-            return;
+          accountName: accountName,
+
+          status: "pending",
+
+          createdAt: serverTimestamp()
 
         }
+      );
 
 
-        if (amount > currentBalance) {
+      message.textContent =
+        "Withdrawal request submitted successfully.";
 
-            showMessage(
-                "Withdrawal amount cannot exceed your available balance.",
-                "error"
-            );
-
-            return;
-
-        }
+      message.className =
+        "message success";
 
 
-        button.disabled = true;
+      document.getElementById("amount").value = "";
 
-        button.textContent =
-            "Submitting...";
+      document.getElementById("bankName").value = "";
 
+      document.getElementById("accountNumber").value = "";
 
-        try {
-
-            await addDoc(
-                collection(
-                    db,
-                    "withdrawalRequests"
-                ),
-                {
-
-                    userId:
-                        currentUser.uid,
-
-                    email:
-                        currentUser.email || "",
-
-                    amount:
-                        amount,
-
-                    bankName:
-                        bankDetails.bankName,
-
-                    accountName:
-                        bankDetails.accountName,
-
-                    accountNumber:
-                        bankDetails.accountNumber,
-
-                    status:
-                        "pending",
-
-                    createdAt:
-                        serverTimestamp()
-
-                }
-            );
+      document.getElementById("accountName").value = "";
 
 
-            amountInput.value = "";
+    } catch (error) {
 
+      console.error(error);
 
-            showMessage(
-                "Withdrawal request submitted successfully.",
-                "success"
-            );
+      message.textContent =
+        "Unable to submit withdrawal request.";
 
-
-        } catch (error) {
-
-            console.error(error);
-
-            showMessage(
-                "Unable to submit withdrawal request.",
-                "error"
-            );
-
-        }
-
-
-        button.disabled = false;
-
-        button.textContent =
-            "Submit Withdrawal Request";
+      message.className =
+        "message error";
 
     }
-);
+
+
+    button.disabled = false;
+
+    button.textContent =
+      "REQUEST WITHDRAWAL";
+
+  });
 
 </script>
 
