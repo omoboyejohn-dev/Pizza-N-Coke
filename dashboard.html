@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
   <meta charset="UTF-8">
@@ -11,48 +12,79 @@
 
   <title>Dashboard | Pizza N Coke</title>
 
-  <link
-    rel="stylesheet"
-    href="style.css"
-  >
+  <link rel="stylesheet" href="style.css">
 
 </head>
 
-<body class="dashboard-body">
 
+<body>
+
+
+<!-- ================= HEADER ================= -->
 
 <header class="dashboard-header">
 
-  <div class="logo">
-    Pizza 🍕 <span>N</span> <b>Coke</b>
-  </div>
+  <div class="dashboard-nav">
 
-  <button
-    id="logoutBtn"
-    class="logout-top"
-  >
-    Logout
-  </button>
+    <div class="logo">
+
+      Pizza 🍕
+      <span>N</span>
+      <b>Coke</b>
+
+    </div>
+
+
+    <div class="header-right">
+
+      <div
+        id="avatar"
+        class="avatar"
+      >
+        U
+      </div>
+
+      <button
+        id="logoutTop"
+        class="logout-button"
+      >
+        Logout
+      </button>
+
+    </div>
+
+  </div>
 
 </header>
 
 
+
+<!-- ================= MAIN ================= -->
+
 <main class="dashboard-container">
 
 
-  <section class="welcome-section">
+  <!-- WELCOME -->
+
+  <section class="welcome-box">
 
     <div class="welcome-small">
       WELCOME BACK
     </div>
 
     <h1>
+
       Hello,
       <span id="username">
-        Customer
+        User
       </span>
       👋
+
     </h1>
+
+    <p>
+      Welcome back to your Pizza N Coke dashboard.
+    </p>
 
   </section>
 
@@ -62,36 +94,49 @@
 
   <section class="balance-card">
 
+
     <div class="balance-label">
       Available Balance
     </div>
 
+
     <div
-      class="balance"
       id="balance"
+      class="balance-amount"
     >
-      ₦0.00
+      ₦2,000.00
     </div>
 
-    <div class="balance-note">
-      🍕 Pizza N Coke Account
+
+    <div class="welcome-bonus">
+
+      🎁 ₦2,000 Welcome Bonus
+
     </div>
+
 
     <div class="balance-buttons">
 
-      <button
-        class="yellow-btn"
-        onclick="openFeature('Add Funds')"
-      >
-        + Add Funds
-      </button>
 
-      <button
-        class="white-btn"
-        onclick="openFeature('Withdraw')"
+      <a
+        href="add-funds.html"
+        class="add-funds-button"
       >
+
+        + Add Funds
+
+      </a>
+
+
+      <a
+        href="withdraw.html"
+        class="withdraw-button"
+      >
+
         Withdraw
-      </button>
+
+      </a>
+
 
     </div>
 
@@ -104,162 +149,191 @@
   <section class="quick-actions">
 
 
-    <button
-      class="action-card"
-      onclick="openFeature('Profile')"
+    <!-- PROFILE -->
+
+    <a
+      href="profile.html"
+      class="dashboard-tile"
     >
 
-      <div class="action-icon">
+      <div class="tile-icon">
         👤
       </div>
 
-      <span>
+      <div>
         Profile
-      </span>
-
-    </button>
-
-
-    <button
-      class="action-card"
-      onclick="openFeature('Add Funds')"
-    >
-
-      <div class="action-icon">
-        💰
       </div>
 
-      <span>
-        Add Funds
-      </span>
-
-    </button>
+    </a>
 
 
-    <button
-      class="action-card"
-      onclick="openFeature('Withdraw')"
+
+    <!-- ADD FUNDS -->
+
+    <a
+      href="add-funds.html"
+      class="dashboard-tile"
     >
 
-      <div class="action-icon">
+      <div class="tile-icon">
+        👛
+      </div>
+
+      <div>
+        Add Funds
+      </div>
+
+    </a>
+
+
+
+    <!-- WITHDRAW -->
+
+    <a
+      href="withdraw.html"
+      class="dashboard-tile"
+    >
+
+      <div class="tile-icon">
         💸
       </div>
 
-      <span>
+      <div>
         Withdraw
-      </span>
-
-    </button>
-
-
-    <button
-      class="action-card"
-      onclick="openFeature('History')"
-    >
-
-      <div class="action-icon">
-        📜
       </div>
 
-      <span>
-        History
-      </span>
-
-    </button>
+    </a>
 
 
-    <button
-      class="action-card"
-      onclick="openFeature('Customer Support')"
+
+    <!-- HISTORY -->
+
+    <a
+      href="history.html"
+      class="dashboard-tile"
     >
 
-      <div class="action-icon">
+      <div class="tile-icon">
+        📋
+      </div>
+
+      <div>
+        History
+      </div>
+
+    </a>
+
+
+
+    <!-- CUSTOMER SUPPORT -->
+
+    <a
+      href="support.html"
+      class="dashboard-tile"
+    >
+
+      <div class="tile-icon">
         🎧
       </div>
 
-      <span>
+      <div>
         Customer Support
-      </span>
+      </div>
 
-    </button>
+    </a>
 
 
-    <button
-      class="action-card"
-      onclick="openFeature('Referral')"
+
+    <!-- REFERRAL -->
+
+    <a
+      href="referral.html"
+      class="dashboard-tile"
     >
 
-      <div class="action-icon">
+      <div class="tile-icon">
         🎁
       </div>
 
-      <span>
+      <div>
         Referral
-      </span>
+      </div>
 
-    </button>
+    </a>
 
 
-    <button
-      class="action-card"
-      onclick="openFeature('Group Chat')"
+
+    <!-- GROUP CHAT -->
+
+    <a
+      href="group-chat.html"
+      class="dashboard-tile"
     >
 
-      <div class="action-icon">
+      <div class="tile-icon">
         💬
       </div>
 
-      <span>
+      <div>
         Group Chat
-      </span>
+      </div>
 
-    </button>
+    </a>
 
 
-    <button
-      class="action-card logout-card"
-      id="logoutCard"
+
+    <!-- LOGOUT -->
+
+    <a
+      href="#"
+      id="logoutTile"
+      class="dashboard-tile"
     >
 
-      <div class="action-icon">
+      <div class="tile-icon">
         🚪
       </div>
 
-      <span>
+      <div>
         Logout
-      </span>
+      </div>
 
-    </button>
+    </a>
+
 
   </section>
 
 
 
-  <!-- PLANS AREA -->
+  <!-- PLANS -->
 
   <section class="plans-section">
 
-    <h2>
-      Choose Your
-      <span>Pizza N Coke</span>
-    </h2>
 
-    <p>
-      Explore the available plans and account features.
-    </p>
+    <div class="plans-heading">
 
+      <h2>
 
-    <div class="demo-notice">
+        Choose Your
+        <span>
+          Pizza N Coke
+        </span>
 
-      <strong>Account Notice</strong>
+      </h2>
 
-      <br>
-
-      Plan information is displayed for demonstration.
-      Real-money transactions should only be connected
-      after proper business, legal and payment setup.
+      <p>
+        Review each plan carefully before making a selection.
+      </p>
 
     </div>
+
+
+
+    <div
+      id="plansContainer"
+      class="plans-grid"
+    ></div>
+
 
   </section>
 
@@ -268,46 +342,7 @@
 
 
 
-<!-- FEATURE MESSAGE -->
-
-<div
-  id="featureModal"
-  class="modal"
->
-
-  <div class="modal-box">
-
-    <button
-      class="close-modal"
-      onclick="closeFeature()"
-    >
-      ×
-    </button>
-
-    <div id="featureIcon">
-      🍕
-    </div>
-
-    <h2 id="featureTitle">
-      Feature
-    </h2>
-
-    <p>
-      This section is ready to be connected.
-    </p>
-
-    <button
-      class="yellow-btn modal-btn"
-      onclick="closeFeature()"
-    >
-      CLOSE
-    </button>
-
-  </div>
-
-</div>
-
-
+<!-- ================= JAVASCRIPT ================= -->
 
 <script type="module">
 
@@ -316,10 +351,12 @@ import {
   db
 } from "./firebase-config.js";
 
+
 import {
   onAuthStateChanged,
   signOut
 } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+
 
 import {
   doc,
@@ -327,16 +364,47 @@ import {
 } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
 
+
 const username =
   document.getElementById("username");
+
+
+const avatar =
+  document.getElementById("avatar");
+
 
 const balance =
   document.getElementById("balance");
 
 
+const plansContainer =
+  document.getElementById("plansContainer");
+
+
+
+/* ================= MONEY FORMAT ================= */
+
+function formatMoney(amount) {
+
+  return "₦" +
+    Number(amount || 0).toLocaleString(
+      "en-NG",
+      {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      }
+    );
+
+}
+
+
+
+/* ================= AUTH CHECK ================= */
+
 onAuthStateChanged(
   auth,
   async (user) => {
+
 
     if (!user) {
 
@@ -348,46 +416,61 @@ onAuthStateChanged(
     }
 
 
+
     try {
 
-      const userDoc =
-        await getDoc(
-          doc(
-            db,
-            "users",
-            user.uid
-          )
+
+      const userRef =
+        doc(
+          db,
+          "users",
+          user.uid
         );
 
 
-      if (userDoc.exists()) {
-
-        const data =
-          userDoc.data();
+      const userSnapshot =
+        await getDoc(userRef);
 
 
-        username.textContent =
-          data.username ||
-          user.displayName ||
-          "Customer";
+      const userData =
+        userSnapshot.exists()
+          ? userSnapshot.data()
+          : {};
 
 
-      } else {
 
-        username.textContent =
-          user.displayName ||
-          "Customer";
+      const name =
+        userData.username ||
+        user.displayName ||
+        "User";
 
-      }
+
+
+      username.textContent =
+        name;
+
+
+
+      avatar.textContent =
+        name
+          .charAt(0)
+          .toUpperCase();
+
+
+
+      balance.textContent =
+        formatMoney(
+          userData.walletBalance || 0
+        );
+
 
 
     } catch (error) {
 
-      console.error(error);
-
-      username.textContent =
-        user.displayName ||
-        "Customer";
+      console.error(
+        "Unable to load account:",
+        error
+      );
 
     }
 
@@ -396,7 +479,7 @@ onAuthStateChanged(
 
 
 
-/* LOGOUT */
+/* ================= LOGOUT ================= */
 
 async function logout() {
 
@@ -417,7 +500,7 @@ async function logout() {
 
 
 document
-  .getElementById("logoutBtn")
+  .getElementById("logoutTop")
   .addEventListener(
     "click",
     logout
@@ -425,40 +508,162 @@ document
 
 
 document
-  .getElementById("logoutCard")
+  .getElementById("logoutTile")
   .addEventListener(
     "click",
-    logout
+    async (event) => {
+
+      event.preventDefault();
+
+      await logout();
+
+    }
   );
 
 
 
-/* FEATURE MODAL */
+/*
+  These are displayed as plan information only.
+  Connect any purchase/financial processing
+  to properly secured server-side logic.
+*/
 
-window.openFeature =
-function(name) {
+const plans = [
 
-  document
-    .getElementById("featureTitle")
-    .textContent = name;
+  {
+    name: "PLAN 1",
+    price: 3500,
+    daily: 750,
+    days: 45,
+    total: 33750
+  },
 
-  document
-    .getElementById("featureModal")
-    .classList.add("show");
+  {
+    name: "PLAN 2",
+    price: 7500,
+    daily: 1750,
+    days: 45,
+    total: 78750
+  },
 
-};
+  {
+    name: "PLAN 3",
+    price: 10500,
+    daily: 2500,
+    days: 45,
+    total: 112500
+  },
+
+  {
+    name: "PLAN 4",
+    price: 20000,
+    daily: 4500,
+    days: 45,
+    total: 202500
+  },
+
+  {
+    name: "PLAN 5",
+    price: 50000,
+    daily: 10500,
+    days: 45,
+    total: 472500
+  },
+
+  {
+    name: "PLAN 6",
+    price: 100000,
+    daily: 22000,
+    days: 45,
+    total: 990000
+  },
+
+  {
+    name: "PLAN 7",
+    price: 150000,
+    daily: 34500,
+    days: 45,
+    total: 1552500
+  },
+
+  {
+    name: "PLAN 8",
+    price: 200000,
+    daily: 44500,
+    days: 45,
+    total: 2002500
+  }
+
+];
 
 
-window.closeFeature =
-function() {
 
-  document
-    .getElementById("featureModal")
-    .classList.remove("show");
+plansContainer.innerHTML =
+  plans.map(
+    (plan) => `
 
-};
+      <div class="plan-card">
+
+        <div class="plan-number">
+          🍕 ${plan.name}
+        </div>
+
+        <div class="plan-price">
+          ${formatMoney(plan.price)}
+        </div>
+
+        <div class="plan-info">
+
+          <div>
+            Daily Amount
+            <strong>
+              ${formatMoney(plan.daily)}
+            </strong>
+          </div>
+
+          <div>
+            Duration
+            <strong>
+              ${plan.days} Days
+            </strong>
+          </div>
+
+          <div>
+            Stated Total
+            <strong>
+              ${formatMoney(plan.total)}
+            </strong>
+          </div>
+
+        </div>
+
+        <button
+          class="plan-button"
+          onclick="showPlanNotice()"
+        >
+          VIEW PLAN
+        </button>
+
+      </div>
+
+    `
+  )
+  .join("");
+
+
+
+window.showPlanNotice =
+  function () {
+
+    alert(
+      "Please review the plan terms before proceeding."
+    );
+
+  };
 
 </script>
 
+
 </body>
+
 </html>
