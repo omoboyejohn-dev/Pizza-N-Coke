@@ -1,129 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login | Pizza N Coke</title>
-
   <link rel="stylesheet" href="style.css">
-
 </head>
 
+<body>
 
-<body class="login-page">
+<header class="topbar">
+  <div class="logo">Pizza 🍕 <span>N</span> <b>Coke</b></div>
+</header>
 
+<section class="auth-page">
 
-<div class="login-container">
+  <div class="auth-card">
 
-  <div class="login-card">
+    <div class="small-title">WELCOME BACK</div>
 
+    <h1>Login to Pizza N Coke</h1>
 
-    <div class="pizza-logo">
-
-      🍕 🥤
-
-    </div>
-
-
-    <div class="logo dark-logo">
-
-      Pizza 🍕
-      <span>N</span>
-      <b>Coke</b>
-
-    </div>
-
-
-    <h1>
-      Welcome Back
-    </h1>
-
-    <p>
-      Login to your Pizza N Coke account.
+    <p class="subtitle">
+      Access your customer account.
     </p>
 
-
-    <div
-      id="message"
-      class="message"
-    ></div>
-
+    <div id="message" class="message"></div>
 
     <div class="input-group">
-
-      <label>
-        Gmail
-      </label>
-
+      <label>Gmail</label>
       <input
         type="email"
         id="email"
-        placeholder="Enter Gmail"
+        placeholder="Enter your Gmail"
       >
-
     </div>
 
-
     <div class="input-group password-box">
-
-      <label>
-        Password
-      </label>
+      <label>Password</label>
 
       <input
         type="password"
         id="password"
-        placeholder="Enter password"
+        placeholder="Enter your password"
       >
 
       <button
         type="button"
         onclick="togglePassword()"
-      >
-        👁
-      </button>
-
+      >👁</button>
     </div>
 
-
-    <button
-      id="loginBtn"
-      class="next-button"
-    >
-
-      LOG IN
-
+    <button id="loginBtn" class="primary-btn">
+      LOG IN →
     </button>
 
-
-    <p class="login-link">
-
+    <p class="switch-link">
       Don't have an account?
-
-      <a href="register.html">
-        CREATE ACCOUNT
-      </a>
-
+      <a href="register.html">CREATE ACCOUNT</a>
     </p>
-
 
   </div>
 
-</div>
-
+</section>
 
 <script type="module">
 
-import {
-  auth
-} from "./firebase-config.js";
+import { auth } from "./firebase-config.js";
 
 import {
   signInWithEmailAndPassword
@@ -143,76 +86,87 @@ const message =
   document.getElementById("message");
 
 
-loginBtn.addEventListener(
-  "click",
-  async () => {
-
-    const mail =
-      email.value.trim();
-
-    const pass =
-      password.value;
-
-
-    if (!mail || !pass) {
-
-      showMessage(
-        "Enter your Gmail and password.",
-        "error"
-      );
-
-      return;
-
-    }
-
-
-    loginBtn.disabled = true;
-
-    loginBtn.textContent =
-      "LOGGING IN...";
-
-
-    try {
-
-      await signInWithEmailAndPassword(
-        auth,
-        mail,
-        pass
-      );
-
-
-      window.location.href =
-        "dashboard.html";
-
-
-    } catch (error) {
-
-      console.error(error);
-
-      showMessage(
-        "Login failed. Check your Gmail and password.",
-        "error"
-      );
-
-      loginBtn.disabled = false;
-
-      loginBtn.textContent =
-        "LOG IN";
-
-    }
-
-  }
-);
-
-
-function showMessage(text, type) {
+function showMessage(text) {
 
   message.textContent = text;
-
-  message.className =
-    "message " + type;
-
+  message.className = "message error";
 }
+
+
+loginBtn.addEventListener("click", async () => {
+
+  const mail =
+    email.value.trim();
+
+  const pass =
+    password.value;
+
+
+  if (!mail || !pass) {
+
+    showMessage(
+      "Please enter your Gmail and password."
+    );
+
+    return;
+  }
+
+
+  loginBtn.disabled = true;
+  loginBtn.textContent = "LOGGING IN...";
+
+
+  try {
+
+    await signInWithEmailAndPassword(
+      auth,
+      mail,
+      pass
+    );
+
+
+    window.location.href =
+      "dashboard.html";
+
+
+  } catch (error) {
+
+    console.error(error);
+
+    let text =
+      "Unable to log in. Please try again.";
+
+
+    if (
+      error.code ===
+      "auth/invalid-credential"
+    ) {
+
+      text =
+        "Incorrect Gmail or password.";
+
+    }
+
+
+    if (
+      error.code ===
+      "auth/user-not-found"
+    ) {
+
+      text =
+        "No account was found with this Gmail.";
+
+    }
+
+
+    showMessage(text);
+
+    loginBtn.disabled = false;
+    loginBtn.textContent = "LOG IN →";
+
+  }
+
+});
 
 
 window.togglePassword = function() {
@@ -226,7 +180,5 @@ window.togglePassword = function() {
 
 </script>
 
-
 </body>
-
 </html>
