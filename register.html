@@ -9,237 +9,235 @@
   <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="auth-body">
 
-<!-- =====================================================
-     REGISTRATION HERO
-===================================================== -->
+<header class="auth-topbar">
 
-<section class="register-hero">
+  <a href="index.html" class="brand">
+    Pizza 🍕 <span>N</span> <b>Coke</b>
+  </a>
 
-  <div class="container">
+  <a href="login.html" class="top-login">
+    LOG IN
+  </a>
 
-    <div class="logo">
-      Pizza 🍕 <span>N</span> <b>Coke</b>
-    </div>
-
-    <h1>
-      GOOD FOOD,<br>
-      GREATER REWARDS.
-    </h1>
-
-    <p>
-      Create your Pizza N Coke customer account.
-    </p>
-
-    <div class="hero-tags">
-      <span>✓ DAILY ACTIVITY</span>
-      <span>✓ COMMUNITY</span>
-      <span>✓ REWARDS</span>
-    </div>
-
-  </div>
-
-</section>
+</header>
 
 
-<!-- =====================================================
-     REGISTRATION CARD
-===================================================== -->
+<main class="register-page">
 
-<div class="register-container">
+  <div class="register-layout">
 
-  <div class="register-card">
+    <!-- LEFT SIDE -->
 
-    <div class="register-title">
+    <section class="register-intro">
 
-      <div class="yellow-title">
-        CREATE YOUR ACCOUNT
+      <div class="intro-badge">
+        🍕 PIZZA N COKE
       </div>
 
-      <h2>
-        Join Pizza N Coke
-      </h2>
+      <h1>
+        A BETTER WAY
+        <span>TO START.</span>
+      </h1>
 
       <p>
-        Start your journey today.
+        Create your account, explore available plans
+        and manage everything from one simple dashboard.
       </p>
 
-    </div>
+      <div class="intro-points">
+
+        <div>
+          <span>✓</span>
+          Easy account registration
+        </div>
+
+        <div>
+          <span>✓</span>
+          Personal customer dashboard
+        </div>
+
+        <div>
+          <span>✓</span>
+          ₦2,000 welcome bonus
+        </div>
+
+      </div>
+
+      <div class="food-emoji">
+        🍕 🥤
+      </div>
+
+    </section>
 
 
-    <!-- ERROR / SUCCESS MESSAGE -->
+    <!-- REGISTER CARD -->
 
-    <div
-      id="message"
-      class="message"
-      style="display:none;"
-    ></div>
+    <section class="auth-card register-card-new">
 
+      <div class="auth-heading">
 
-    <!-- =================================================
-         USERNAME
-    ================================================= -->
+        <div class="small-title">
+          CREATE ACCOUNT
+        </div>
 
-    <div class="input-group">
+        <h2>
+          Join Pizza N Coke
+        </h2>
 
-      <label for="username">
-        Username
-      </label>
+        <p>
+          Create your customer account below.
+        </p>
 
-      <input
-        type="text"
-        id="username"
-        placeholder="Enter username"
-        autocomplete="username"
-      >
-
-    </div>
+      </div>
 
 
-    <!-- =================================================
-         GMAIL
-    ================================================= -->
-
-    <div class="input-group">
-
-      <label for="email">
-        Gmail
-      </label>
-
-      <input
-        type="email"
-        id="email"
-        placeholder="Enter Gmail address"
-        autocomplete="email"
-      >
-
-    </div>
+      <div
+        id="errorBox"
+        class="error-box"
+      ></div>
 
 
-    <!-- =================================================
-         REFERRAL CODE
-    ================================================= -->
+      <form id="registerForm">
 
-    <div class="input-group">
+        <div class="input-group">
 
-      <label for="referral">
-        Referral Code
-      </label>
+          <label for="username">
+            Username
+          </label>
 
-      <input
-        type="text"
-        id="referral"
-        placeholder="Enter referral code (optional)"
-        autocomplete="off"
-      >
+          <input
+            type="text"
+            id="username"
+            placeholder="Enter username"
+            autocomplete="username"
+            required
+          >
 
-    </div>
-
-
-    <!-- =================================================
-         PASSWORD
-    ================================================= -->
-
-    <div class="input-group password-box">
-
-      <label for="password">
-        Password
-      </label>
-
-      <input
-        type="password"
-        id="password"
-        placeholder="Create password"
-        autocomplete="new-password"
-      >
-
-      <button
-        type="button"
-        class="password-toggle"
-        onclick="togglePassword('password', this)"
-        aria-label="Show password"
-      >
-        👁
-      </button>
-
-    </div>
+        </div>
 
 
-    <!-- =================================================
-         CONFIRM PASSWORD
-    ================================================= -->
+        <div class="input-group">
 
-    <div class="input-group password-box">
+          <label for="email">
+            Gmail
+          </label>
 
-      <label for="confirmPassword">
-        Confirm Password
-      </label>
+          <input
+            type="email"
+            id="email"
+            placeholder="Enter Gmail address"
+            autocomplete="email"
+            required
+          >
 
-      <input
-        type="password"
-        id="confirmPassword"
-        placeholder="Confirm password"
-        autocomplete="new-password"
-      >
-
-      <button
-        type="button"
-        class="password-toggle"
-        onclick="togglePassword('confirmPassword', this)"
-        aria-label="Show password"
-      >
-        👁
-      </button>
-
-    </div>
+        </div>
 
 
-    <!-- =================================================
-         REGISTER BUTTON
-    ================================================= -->
+        <div class="input-group">
 
-    <button
-      id="registerBtn"
-      class="next-button"
-      type="button"
-    >
-      NEXT →
-    </button>
+          <label for="referralCode">
+            Referral Code
+            <small>(Optional)</small>
+          </label>
+
+          <input
+            type="text"
+            id="referralCode"
+            placeholder="Enter referral code"
+            autocomplete="off"
+          >
+
+        </div>
 
 
-    <p class="login-link">
+        <div class="input-group password-field">
 
-      Already a member?
+          <label for="password">
+            Password
+          </label>
 
-      <a href="login.html">
-        LOG IN
-      </a>
+          <input
+            type="password"
+            id="password"
+            placeholder="Create password"
+            autocomplete="new-password"
+            required
+          >
 
-    </p>
+          <button
+            type="button"
+            class="eye-button"
+            onclick="togglePassword('password', this)"
+          >
+            👁
+          </button>
+
+        </div>
+
+
+        <div class="input-group password-field">
+
+          <label for="confirmPassword">
+            Confirm Password
+          </label>
+
+          <input
+            type="password"
+            id="confirmPassword"
+            placeholder="Confirm password"
+            autocomplete="new-password"
+            required
+          >
+
+          <button
+            type="button"
+            class="eye-button"
+            onclick="togglePassword('confirmPassword', this)"
+          >
+            👁
+          </button>
+
+        </div>
+
+
+        <button
+          type="submit"
+          id="registerButton"
+          class="auth-button"
+        >
+          NEXT →
+        </button>
+
+      </form>
+
+
+      <div class="auth-footer">
+
+        Already have an account?
+
+        <a href="login.html">
+          LOG IN
+        </a>
+
+      </div>
+
+    </section>
 
   </div>
 
-</div>
+</main>
 
-
-<!-- =====================================================
-     FIREBASE REGISTRATION
-===================================================== -->
 
 <script type="module">
 
-import {
-  auth,
-  db
-} from "./firebase-config.js";
-
+import { auth, db } from "./firebase-config.js";
 
 import {
   createUserWithEmailAndPassword,
   updateProfile
 } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
-
 
 import {
   doc,
@@ -248,503 +246,293 @@ import {
 } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
 
+const form =
+  document.getElementById("registerForm");
 
-/* =====================================================
-   GET ELEMENTS
-===================================================== */
+const errorBox =
+  document.getElementById("errorBox");
 
-const usernameInput =
-  document.getElementById("username");
-
-const emailInput =
-  document.getElementById("email");
-
-const referralInput =
-  document.getElementById("referral");
-
-const passwordInput =
-  document.getElementById("password");
-
-const confirmPasswordInput =
-  document.getElementById("confirmPassword");
-
-const registerBtn =
-  document.getElementById("registerBtn");
-
-const messageBox =
-  document.getElementById("message");
+const button =
+  document.getElementById("registerButton");
 
 
+function showMessage(text, success = false) {
 
-/* =====================================================
-   SHOW MESSAGE
-===================================================== */
+  errorBox.textContent = text;
 
-function showMessage(text, type = "error") {
-
-  messageBox.textContent = text;
-
-  messageBox.className =
-    "message " + type;
-
-  messageBox.style.display =
-    "block";
+  errorBox.className =
+    success
+      ? "error-box success-box"
+      : "error-box";
 
 }
 
-
-
-/* =====================================================
-   HIDE MESSAGE
-===================================================== */
-
-function hideMessage() {
-
-  messageBox.textContent = "";
-
-  messageBox.style.display =
-    "none";
-
-}
-
-
-
-/* =====================================================
-   GENERATE REFERRAL CODE
-===================================================== */
 
 function generateReferralCode(username) {
 
-  const namePart =
+  const clean =
     username
       .replace(/[^a-zA-Z0-9]/g, "")
       .substring(0, 6)
       .toUpperCase();
 
-  const randomPart =
+  const random =
     Math.random()
       .toString(36)
       .substring(2, 8)
       .toUpperCase();
 
-  return namePart + randomPart;
+  return clean + random;
 
 }
 
 
+form.addEventListener("submit", async (event) => {
 
-/* =====================================================
-   REGISTER CUSTOMER
-===================================================== */
+  event.preventDefault();
 
-registerBtn.addEventListener(
-  "click",
-  async () => {
+  errorBox.className = "error-box";
+  errorBox.textContent = "";
 
-    hideMessage();
 
+  const username =
+    document
+      .getElementById("username")
+      .value
+      .trim();
 
-    const username =
-      usernameInput.value.trim();
+  const email =
+    document
+      .getElementById("email")
+      .value
+      .trim()
+      .toLowerCase();
 
-    const email =
-      emailInput.value
-        .trim()
-        .toLowerCase();
+  const referralCode =
+    document
+      .getElementById("referralCode")
+      .value
+      .trim();
 
-    const referral =
-      referralInput.value.trim();
+  const password =
+    document.getElementById("password").value;
 
-    const password =
-      passwordInput.value;
+  const confirmPassword =
+    document
+      .getElementById("confirmPassword")
+      .value;
 
-    const confirmPassword =
-      confirmPasswordInput.value;
 
+  if (username.length < 3) {
 
+    showMessage(
+      "Username must contain at least 3 characters."
+    );
 
-    /* ================================================
-       VALIDATION
-    ================================================= */
-
-    if (!username) {
-
-      showMessage(
-        "Please enter your username."
-      );
-
-      usernameInput.focus();
-
-      return;
-
-    }
-
-
-    if (username.length < 3) {
-
-      showMessage(
-        "Username must contain at least 3 characters."
-      );
-
-      usernameInput.focus();
-
-      return;
-
-    }
-
-
-    if (!email) {
-
-      showMessage(
-        "Please enter your Gmail address."
-      );
-
-      emailInput.focus();
-
-      return;
-
-    }
-
-
-    if (!email.includes("@")) {
-
-      showMessage(
-        "Please enter a valid Gmail address."
-      );
-
-      emailInput.focus();
-
-      return;
-
-    }
-
-
-    if (!password) {
-
-      showMessage(
-        "Please create a password."
-      );
-
-      passwordInput.focus();
-
-      return;
-
-    }
-
-
-    if (password.length < 6) {
-
-      showMessage(
-        "Password must contain at least 6 characters."
-      );
-
-      passwordInput.focus();
-
-      return;
-
-    }
-
-
-    if (!confirmPassword) {
-
-      showMessage(
-        "Please confirm your password."
-      );
-
-      confirmPasswordInput.focus();
-
-      return;
-
-    }
-
-
-    if (password !== confirmPassword) {
-
-      showMessage(
-        "Passwords do not match."
-      );
-
-      confirmPasswordInput.focus();
-
-      return;
-
-    }
-
-
-
-    /* ================================================
-       DISABLE BUTTON
-    ================================================= */
-
-    registerBtn.disabled =
-      true;
-
-    registerBtn.textContent =
-      "CREATING ACCOUNT...";
-
-
-
-    try {
-
-
-      /* ================================================
-         CREATE FIREBASE AUTH ACCOUNT
-      ================================================= */
-
-      const credential =
-        await createUserWithEmailAndPassword(
-          auth,
-          email,
-          password
-        );
-
-
-      const firebaseUser =
-        credential.user;
-
-
-
-      /* ================================================
-         UPDATE FIREBASE DISPLAY NAME
-      ================================================= */
-
-      await updateProfile(
-        firebaseUser,
-        {
-          displayName: username
-        }
-      );
-
-
-
-      /* ================================================
-         GENERATE CUSTOMER REFERRAL CODE
-      ================================================= */
-
-      const customerReferralCode =
-        generateReferralCode(
-          username
-        );
-
-
-
-      /* ================================================
-         CREATE FIRESTORE CUSTOMER ACCOUNT
-      ================================================= */
-
-      await setDoc(
-
-        doc(
-          db,
-          "users",
-          firebaseUser.uid
-        ),
-
-        {
-
-          uid:
-            firebaseUser.uid,
-
-          username:
-            username,
-
-          email:
-            email,
-
-          referralCode:
-            customerReferralCode,
-
-          referredBy:
-            referral || null,
-
-          /* Welcome balance */
-
-          walletBalance:
-            2000,
-
-          welcomeBonus:
-            2000,
-
-          welcomeBonusClaimed:
-            true,
-
-          /* Account totals */
-
-          totalDeposit:
-            0,
-
-          totalProfit:
-            0,
-
-          totalWithdrawal:
-            0,
-
-          /* Account information */
-
-          accountStatus:
-            "active",
-
-          createdAt:
-            serverTimestamp(),
-
-          updatedAt:
-            serverTimestamp()
-
-        }
-
-      );
-
-
-
-      /* ================================================
-         SUCCESS
-      ================================================= */
-
-      showMessage(
-        "Account created successfully! ₦2,000 welcome bonus added.",
-        "success"
-      );
-
-
-      registerBtn.textContent =
-        "ACCOUNT CREATED ✓";
-
-
-      /* Give Firebase a moment to finish */
-
-      setTimeout(
-        () => {
-
-          window.location.href =
-            "dashboard.html";
-
-        },
-        1200
-      );
-
-
-    } catch (error) {
-
-      console.error(
-        "Firebase registration error:",
-        error
-      );
-
-
-      let errorMessage =
-        "Unable to create account. Please try again.";
-
-
-
-      /* ================================================
-         FIREBASE ERROR HANDLING
-      ================================================= */
-
-      switch (error.code) {
-
-
-        case "auth/email-already-in-use":
-
-          errorMessage =
-            "This Gmail is already registered. Please log in instead.";
-
-          break;
-
-
-        case "auth/invalid-email":
-
-          errorMessage =
-            "Please enter a valid Gmail address.";
-
-          break;
-
-
-        case "auth/weak-password":
-
-          errorMessage =
-            "Your password is too weak. Use at least 6 characters.";
-
-          break;
-
-
-        case "auth/operation-not-allowed":
-
-          errorMessage =
-            "Email/password registration is disabled in Firebase Authentication.";
-
-          break;
-
-
-        case "auth/network-request-failed":
-
-          errorMessage =
-            "Network connection failed. Please check your internet connection.";
-
-          break;
-
-
-        case "permission-denied":
-
-          errorMessage =
-            "Firestore permission denied. Please check your Firestore Rules.";
-
-          break;
-
-
-        case "failed-precondition":
-
-          errorMessage =
-            "Firestore is not configured correctly. Please check your Firebase project.";
-
-          break;
-
-
-        default:
-
-          if (
-            error.message &&
-            error.message
-              .toLowerCase()
-              .includes("permission")
-          ) {
-
-            errorMessage =
-              "Firestore permission denied. Please check your Firestore Rules.";
-
-          }
-
-          break;
-
-      }
-
-
-
-      /* ================================================
-         SHOW ERROR
-      ================================================= */
-
-      showMessage(
-        errorMessage,
-        "error"
-      );
-
-
-      registerBtn.disabled =
-        false;
-
-      registerBtn.textContent =
-        "NEXT →";
-
-    }
+    return;
 
   }
-);
 
 
+  if (!email) {
 
-/* =====================================================
-   SHOW / HIDE PASSWORD
-===================================================== */
+    showMessage(
+      "Please enter your Gmail address."
+    );
+
+    return;
+
+  }
+
+
+  if (password.length < 6) {
+
+    showMessage(
+      "Password must contain at least 6 characters."
+    );
+
+    return;
+
+  }
+
+
+  if (password !== confirmPassword) {
+
+    showMessage(
+      "Passwords do not match."
+    );
+
+    return;
+
+  }
+
+
+  button.disabled = true;
+
+  button.textContent =
+    "CREATING ACCOUNT...";
+
+
+  try {
+
+    const credential =
+      await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+
+    const user =
+      credential.user;
+
+
+    await updateProfile(
+      user,
+      {
+        displayName: username
+      }
+    );
+
+
+    const myReferralCode =
+      generateReferralCode(username);
+
+
+    await setDoc(
+      doc(
+        db,
+        "users",
+        user.uid
+      ),
+      {
+
+        uid: user.uid,
+
+        username: username,
+
+        email: email,
+
+        referralCode: myReferralCode,
+
+        referredBy:
+          referralCode || null,
+
+        walletBalance: 2000,
+
+        welcomeBonus: 2000,
+
+        welcomeBonusClaimed: true,
+
+        totalDeposit: 0,
+
+        totalProfit: 0,
+
+        totalWithdrawal: 0,
+
+        accountStatus: "active",
+
+        createdAt:
+          serverTimestamp(),
+
+        updatedAt:
+          serverTimestamp()
+
+      }
+    );
+
+
+    showMessage(
+      "Account created successfully! ₦2,000 welcome bonus added.",
+      true
+    );
+
+
+    button.textContent =
+      "ACCOUNT CREATED ✓";
+
+
+    setTimeout(() => {
+
+      window.location.href =
+        "dashboard.html";
+
+    }, 1200);
+
+
+  } catch (error) {
+
+    console.error(error);
+
+    let message =
+      "Unable to create account. Please try again.";
+
+
+    switch (error.code) {
+
+      case "auth/email-already-in-use":
+
+        message =
+          "This Gmail is already registered. Please log in.";
+
+        break;
+
+      case "auth/invalid-email":
+
+        message =
+          "Please enter a valid Gmail address.";
+
+        break;
+
+      case "auth/weak-password":
+
+        message =
+          "Your password is too weak.";
+
+        break;
+
+      case "auth/operation-not-allowed":
+
+        message =
+          "Email/password login is not enabled in Firebase.";
+
+        break;
+
+      case "auth/network-request-failed":
+
+        message =
+          "Network error. Check your internet connection.";
+
+        break;
+
+      default:
+
+        if (
+          error.message &&
+          error.message
+            .toLowerCase()
+            .includes("permission")
+        ) {
+
+          message =
+            "Firestore permission denied. Check your Firestore Rules.";
+
+        }
+
+    }
+
+
+    showMessage(message);
+
+    button.disabled = false;
+
+    button.textContent =
+      "NEXT →";
+
+  }
+
+});
+
 
 window.togglePassword =
   function(id, button) {
@@ -752,156 +540,23 @@ window.togglePassword =
     const input =
       document.getElementById(id);
 
+    if (input.type === "password") {
 
-    if (
-      input.type === "password"
-    ) {
+      input.type = "text";
 
-      input.type =
-        "text";
-
-      button.textContent =
-        "🙈";
+      button.textContent = "🙈";
 
     } else {
 
-      input.type =
-        "password";
+      input.type = "password";
 
-      button.textContent =
-        "👁";
+      button.textContent = "👁";
 
     }
 
   };
 
 </script>
-
-
-<!-- =====================================================
-     MESSAGE STYLES
-===================================================== -->
-
-<style>
-
-.message {
-
-  margin:
-    18px 0;
-
-  padding:
-    14px 16px;
-
-  border-radius:
-    13px;
-
-  font-size:
-    14px;
-
-  font-weight:
-    700;
-
-  line-height:
-    1.5;
-
-}
-
-
-.message.error {
-
-  background:
-    #fff0f0;
-
-  border:
-    1px solid #ffcaca;
-
-  color:
-    #c62828;
-
-}
-
-
-.message.success {
-
-  background:
-    #ecfff4;
-
-  border:
-    1px solid #a9e8c4;
-
-  color:
-    #087f3e;
-
-}
-
-
-.next-button:disabled {
-
-  opacity:
-    0.65;
-
-  cursor:
-    not-allowed;
-
-}
-
-
-.password-box {
-
-  position:
-    relative;
-
-}
-
-
-.password-box input {
-
-  padding-right:
-    55px;
-
-}
-
-
-.password-toggle {
-
-  position:
-    absolute;
-
-  right:
-    12px;
-
-  bottom:
-    10px;
-
-  width:
-    42px;
-
-  height:
-    42px;
-
-  border:
-    none;
-
-  background:
-    transparent;
-
-  cursor:
-    pointer;
-
-  font-size:
-    20px;
-
-}
-
-
-.password-toggle:hover {
-
-  transform:
-    scale(1.08);
-
-}
-
-</style>
 
 </body>
 </html>
