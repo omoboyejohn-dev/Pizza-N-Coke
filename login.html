@@ -1,68 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
   <title>Login | Pizza N Coke</title>
+
   <link rel="stylesheet" href="style.css">
+
 </head>
 
-<body>
 
-<header class="topbar">
-  <div class="logo">Pizza 🍕 <span>N</span> <b>Coke</b></div>
+<body class="auth-body">
+
+
+<header class="auth-topbar">
+
+  <a href="index.html" class="brand">
+    Pizza 🍕 <span>N</span> <b>Coke</b>
+  </a>
+
+  <a
+    href="register.html"
+    class="top-login"
+  >
+    REGISTER
+  </a>
+
 </header>
 
-<section class="auth-page">
 
-  <div class="auth-card">
+<main class="login-page-new">
 
-    <div class="small-title">WELCOME BACK</div>
+  <div class="login-layout">
 
-    <h1>Login to Pizza N Coke</h1>
 
-    <p class="subtitle">
-      Access your customer account.
-    </p>
+    <!-- LEFT -->
 
-    <div id="message" class="message"></div>
+    <section class="login-intro">
 
-    <div class="input-group">
-      <label>Gmail</label>
-      <input
-        type="email"
-        id="email"
-        placeholder="Enter your Gmail"
-      >
-    </div>
+      <div class="intro-badge">
+        🥤 WELCOME BACK
+      </div>
 
-    <div class="input-group password-box">
-      <label>Password</label>
+      <h1>
+        PIZZA TIME.
+        <span>FRESH REWARDS.</span>
+      </h1>
 
-      <input
-        type="password"
-        id="password"
-        placeholder="Enter your password"
-      >
+      <p>
+        Log in to continue your Pizza N Coke
+        journey and access your customer dashboard.
+      </p>
 
-      <button
-        type="button"
-        onclick="togglePassword()"
-      >👁</button>
-    </div>
 
-    <button id="loginBtn" class="primary-btn">
-      LOG IN →
-    </button>
+      <div class="intro-points">
 
-    <p class="switch-link">
-      Don't have an account?
-      <a href="register.html">CREATE ACCOUNT</a>
-    </p>
+        <div>
+          <span>✓</span>
+          Manage your account
+        </div>
+
+        <div>
+          <span>✓</span>
+          View available plans
+        </div>
+
+        <div>
+          <span>✓</span>
+          Track your account activity
+        </div>
+
+      </div>
+
+
+      <div class="food-emoji">
+        🍕 🥤
+      </div>
+
+    </section>
+
+
+    <!-- LOGIN CARD -->
+
+    <section class="auth-card">
+
+      <div class="auth-heading">
+
+        <div class="small-title">
+          WELCOME BACK
+        </div>
+
+        <h2>
+          Login to Pizza N Coke
+        </h2>
+
+        <p>
+          Access your customer account.
+        </p>
+
+      </div>
+
+
+      <div
+        id="message"
+        class="error-box"
+      ></div>
+
+
+      <form id="loginForm">
+
+
+        <div class="input-group">
+
+          <label for="email">
+            Gmail
+          </label>
+
+          <input
+            type="email"
+            id="email"
+            placeholder="Enter your Gmail"
+            autocomplete="email"
+            required
+          >
+
+        </div>
+
+
+        <div class="input-group password-field">
+
+          <label for="password">
+            Password
+          </label>
+
+          <input
+            type="password"
+            id="password"
+            placeholder="Enter your password"
+            autocomplete="current-password"
+            required
+          >
+
+          <button
+            type="button"
+            class="eye-button"
+            onclick="toggleLoginPassword()"
+          >
+            👁
+          </button>
+
+        </div>
+
+
+        <button
+          type="submit"
+          id="loginButton"
+          class="auth-button"
+        >
+          LOG IN →
+        </button>
+
+
+      </form>
+
+
+      <div class="auth-footer">
+
+        Don't have an account?
+
+        <a href="register.html">
+          CREATE ACCOUNT
+        </a>
+
+      </div>
+
+    </section>
 
   </div>
 
-</section>
+</main>
+
 
 <script type="module">
 
@@ -73,14 +196,17 @@ import {
 } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 
 
+const form =
+  document.getElementById("loginForm");
+
 const email =
   document.getElementById("email");
 
 const password =
   document.getElementById("password");
 
-const loginBtn =
-  document.getElementById("loginBtn");
+const button =
+  document.getElementById("loginButton");
 
 const message =
   document.getElementById("message");
@@ -89,96 +215,143 @@ const message =
 function showMessage(text) {
 
   message.textContent = text;
-  message.className = "message error";
+
+  message.className =
+    "error-box";
+
 }
 
 
-loginBtn.addEventListener("click", async () => {
+form.addEventListener(
+  "submit",
+  async (event) => {
 
-  const mail =
-    email.value.trim();
+    event.preventDefault();
 
-  const pass =
-    password.value;
+    message.textContent = "";
 
-
-  if (!mail || !pass) {
-
-    showMessage(
-      "Please enter your Gmail and password."
-    );
-
-    return;
-  }
+    message.className =
+      "error-box";
 
 
-  loginBtn.disabled = true;
-  loginBtn.textContent = "LOGGING IN...";
+    const mail =
+      email.value.trim().toLowerCase();
+
+    const pass =
+      password.value;
 
 
-  try {
+    if (!mail || !pass) {
 
-    await signInWithEmailAndPassword(
-      auth,
-      mail,
-      pass
-    );
+      showMessage(
+        "Please enter your Gmail and password."
+      );
 
-
-    window.location.href =
-      "dashboard.html";
-
-
-  } catch (error) {
-
-    console.error(error);
-
-    let text =
-      "Unable to log in. Please try again.";
-
-
-    if (
-      error.code ===
-      "auth/invalid-credential"
-    ) {
-
-      text =
-        "Incorrect Gmail or password.";
+      return;
 
     }
 
 
-    if (
-      error.code ===
-      "auth/user-not-found"
-    ) {
+    button.disabled = true;
 
-      text =
-        "No account was found with this Gmail.";
+    button.textContent =
+      "LOGGING IN...";
+
+
+    try {
+
+      await signInWithEmailAndPassword(
+        auth,
+        mail,
+        pass
+      );
+
+
+      window.location.href =
+        "dashboard.html";
+
+
+    } catch (error) {
+
+      console.error(error);
+
+
+      let text =
+        "Unable to log in. Please try again.";
+
+
+      switch (error.code) {
+
+        case "auth/invalid-credential":
+
+          text =
+            "Incorrect Gmail or password.";
+
+          break;
+
+        case "auth/user-not-found":
+
+          text =
+            "No account was found with this Gmail.";
+
+          break;
+
+        case "auth/wrong-password":
+
+          text =
+            "Incorrect Gmail or password.";
+
+          break;
+
+        case "auth/invalid-email":
+
+          text =
+            "Please enter a valid Gmail address.";
+
+          break;
+
+        case "auth/too-many-requests":
+
+          text =
+            "Too many attempts. Please wait and try again.";
+
+          break;
+
+        case "auth/network-request-failed":
+
+          text =
+            "Network error. Check your internet connection.";
+
+          break;
+
+      }
+
+
+      showMessage(text);
+
+      button.disabled = false;
+
+      button.textContent =
+        "LOG IN →";
 
     }
 
-
-    showMessage(text);
-
-    loginBtn.disabled = false;
-    loginBtn.textContent = "LOG IN →";
-
   }
+);
 
-});
 
+window.toggleLoginPassword =
+  function() {
 
-window.togglePassword = function() {
+    password.type =
+      password.type === "password"
+        ? "text"
+        : "password";
 
-  password.type =
-    password.type === "password"
-      ? "text"
-      : "password";
-
-};
+  };
 
 </script>
+
 
 </body>
 </html>
