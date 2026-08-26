@@ -14,6 +14,101 @@
 
   <link rel="stylesheet" href="style.css">
 
+  <style>
+
+    /* ================= PROCESSING OVERLAY ================= */
+
+    .processing-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.72);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 20px;
+    }
+
+    .processing-overlay.show {
+      display: flex;
+    }
+
+    .processing-box {
+      width: min(100%, 380px);
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 35px 25px;
+      text-align: center;
+      box-shadow: 0 25px 70px rgba(0,0,0,.35);
+    }
+
+    .processing-icon {
+      font-size: 50px;
+      margin-bottom: 15px;
+    }
+
+    .processing-box h2 {
+      margin: 0;
+      color: #111111;
+      font-size: 25px;
+      font-weight: 900;
+    }
+
+    .processing-box p {
+      margin: 10px 0 22px;
+      color: #6f7b8b;
+      font-size: 14px;
+    }
+
+    .processing-spinner {
+      width: 42px;
+      height: 42px;
+      margin: auto;
+      border: 4px solid #e5e5e5;
+      border-top-color: #0757d9;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .processing-close {
+      margin-top: 22px;
+      border: none;
+      background: #ffd400;
+      color: #111111;
+      padding: 12px 25px;
+      border-radius: 12px;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+
+    /* ================= PLANS HEADING ================= */
+
+    .plans-heading {
+      text-align: center;
+    }
+
+    .plans-heading h2 {
+      font-weight: 950;
+      text-align: center;
+    }
+
+    .plans-heading h2 span {
+      font-weight: 950;
+    }
+
+    .plans-heading p {
+      text-align: center;
+    }
+
+  </style>
+
 </head>
 
 
@@ -27,11 +122,9 @@
   <div class="dashboard-nav">
 
     <div class="logo">
-
       Pizza 🍕
       <span>N</span>
       <b>Coke</b>
-
     </div>
 
 
@@ -47,6 +140,7 @@
       <button
         id="logoutTop"
         class="logout-button"
+        type="button"
       >
         Logout
       </button>
@@ -64,7 +158,7 @@
 <main class="dashboard-container">
 
 
-  <!-- WELCOME -->
+  <!-- ================= WELCOME ================= -->
 
   <section class="welcome-box">
 
@@ -90,10 +184,9 @@
 
 
 
-  <!-- BALANCE -->
+  <!-- ================= BALANCE ================= -->
 
   <section class="balance-card">
-
 
     <div class="balance-label">
       Available Balance
@@ -109,34 +202,28 @@
 
 
     <div class="welcome-bonus">
-
       🎁 ₦2,000 Welcome Bonus
-
     </div>
 
 
     <div class="balance-buttons">
 
-
       <a
-        href="add-funds.html"
-        class="add-funds-button"
+        href="#"
+        class="add-funds-button processing-link"
+        data-name="Add Funds"
       >
-
         + Add Funds
-
       </a>
 
 
       <a
-        href="withdraw.html"
-        class="withdraw-button"
+        href="#"
+        class="withdraw-button processing-link"
+        data-name="Withdraw"
       >
-
         Withdraw
-
       </a>
-
 
     </div>
 
@@ -144,16 +231,15 @@
 
 
 
-  <!-- QUICK ACTIONS -->
+  <!-- ================= QUICK ACTIONS ================= -->
 
   <section class="quick-actions">
 
 
-    <!-- PROFILE -->
-
     <a
-      href="profile.html"
-      class="dashboard-tile"
+      href="#"
+      class="dashboard-tile processing-link"
+      data-name="Profile"
     >
 
       <div class="tile-icon">
@@ -167,12 +253,10 @@
     </a>
 
 
-
-    <!-- ADD FUNDS -->
-
     <a
-      href="add-funds.html"
-      class="dashboard-tile"
+      href="#"
+      class="dashboard-tile processing-link"
+      data-name="Add Funds"
     >
 
       <div class="tile-icon">
@@ -186,12 +270,10 @@
     </a>
 
 
-
-    <!-- WITHDRAW -->
-
     <a
-      href="withdraw.html"
-      class="dashboard-tile"
+      href="#"
+      class="dashboard-tile processing-link"
+      data-name="Withdraw"
     >
 
       <div class="tile-icon">
@@ -205,12 +287,10 @@
     </a>
 
 
-
-    <!-- HISTORY -->
-
     <a
-      href="history.html"
-      class="dashboard-tile"
+      href="#"
+      class="dashboard-tile processing-link"
+      data-name="History"
     >
 
       <div class="tile-icon">
@@ -224,12 +304,10 @@
     </a>
 
 
-
-    <!-- CUSTOMER SUPPORT -->
-
     <a
-      href="support.html"
-      class="dashboard-tile"
+      href="#"
+      class="dashboard-tile processing-link"
+      data-name="Customer Support"
     >
 
       <div class="tile-icon">
@@ -243,12 +321,10 @@
     </a>
 
 
-
-    <!-- REFERRAL -->
-
     <a
-      href="referral.html"
-      class="dashboard-tile"
+      href="#"
+      class="dashboard-tile processing-link"
+      data-name="Referral"
     >
 
       <div class="tile-icon">
@@ -262,12 +338,10 @@
     </a>
 
 
-
-    <!-- GROUP CHAT -->
-
     <a
-      href="group-chat.html"
-      class="dashboard-tile"
+      href="#"
+      class="dashboard-tile processing-link"
+      data-name="Group Chat"
     >
 
       <div class="tile-icon">
@@ -280,9 +354,6 @@
 
     </a>
 
-
-
-    <!-- LOGOUT -->
 
     <a
       href="#"
@@ -300,12 +371,11 @@
 
     </a>
 
-
   </section>
 
 
 
-  <!-- PLANS -->
+  <!-- ================= PLANS ================= -->
 
   <section class="plans-section">
 
@@ -313,12 +383,10 @@
     <div class="plans-heading">
 
       <h2>
-
         Choose Your
         <span>
           Pizza N Coke
         </span>
-
       </h2>
 
       <p>
@@ -328,17 +396,52 @@
     </div>
 
 
-
     <div
       id="plansContainer"
       class="plans-grid"
     ></div>
 
-
   </section>
 
 
 </main>
+
+
+
+<!-- ================= PROCESSING MODAL ================= -->
+
+<div
+  id="processingOverlay"
+  class="processing-overlay"
+>
+
+  <div class="processing-box">
+
+    <div class="processing-icon">
+      🍕
+    </div>
+
+    <h2>
+      Processing...
+    </h2>
+
+    <p id="processingText">
+      This section is currently being prepared.
+    </p>
+
+    <div class="processing-spinner"></div>
+
+    <button
+      id="processingClose"
+      class="processing-close"
+      type="button"
+    >
+      CLOSE
+    </button>
+
+  </div>
+
+</div>
 
 
 
@@ -365,20 +468,28 @@ import {
 
 
 
+/* ================= ELEMENTS ================= */
+
 const username =
   document.getElementById("username");
-
 
 const avatar =
   document.getElementById("avatar");
 
-
 const balance =
   document.getElementById("balance");
 
-
 const plansContainer =
   document.getElementById("plansContainer");
+
+const processingOverlay =
+  document.getElementById("processingOverlay");
+
+const processingText =
+  document.getElementById("processingText");
+
+const processingClose =
+  document.getElementById("processingClose");
 
 
 
@@ -405,7 +516,6 @@ onAuthStateChanged(
   auth,
   async (user) => {
 
-
     if (!user) {
 
       window.location.href =
@@ -416,9 +526,7 @@ onAuthStateChanged(
     }
 
 
-
     try {
-
 
       const userRef =
         doc(
@@ -438,17 +546,14 @@ onAuthStateChanged(
           : {};
 
 
-
       const name =
         userData.username ||
         user.displayName ||
         "User";
 
 
-
       username.textContent =
         name;
-
 
 
       avatar.textContent =
@@ -457,12 +562,10 @@ onAuthStateChanged(
           .toUpperCase();
 
 
-
       balance.textContent =
         formatMoney(
           userData.walletBalance || 0
         );
-
 
 
     } catch (error) {
@@ -492,7 +595,10 @@ async function logout() {
 
   } catch (error) {
 
-    console.error(error);
+    console.error(
+      "Logout error:",
+      error
+    );
 
   }
 
@@ -511,22 +617,83 @@ document
   .getElementById("logoutTile")
   .addEventListener(
     "click",
-    async (event) => {
-
-      event.preventDefault();
-
-      await logout();
-
-    }
+    logout
   );
 
 
 
-/*
-  These are displayed as plan information only.
-  Connect any purchase/financial processing
-  to properly secured server-side logic.
-*/
+/* ================= PROCESSING ================= */
+
+document
+  .querySelectorAll(".processing-link")
+  .forEach((button) => {
+
+    button.addEventListener(
+      "click",
+      (event) => {
+
+        event.preventDefault();
+
+
+        const name =
+          button.dataset.name ||
+          "This section";
+
+
+        processingText.textContent =
+          name +
+          " is currently being processed and will be available soon.";
+
+
+        processingOverlay.classList.add(
+          "show"
+        );
+
+      }
+    );
+
+  });
+
+
+
+/* ================= CLOSE PROCESSING ================= */
+
+processingClose.addEventListener(
+  "click",
+  () => {
+
+    processingOverlay.classList.remove(
+      "show"
+    );
+
+  }
+);
+
+
+
+/* Close when clicking outside */
+
+processingOverlay.addEventListener(
+  "click",
+  (event) => {
+
+    if (
+      event.target ===
+      processingOverlay
+    ) {
+
+      processingOverlay.classList.remove(
+        "show"
+      );
+
+    }
+
+  }
+);
+
+
+
+/* ================= PLAN DATA ================= */
 
 const plans = [
 
@@ -598,6 +765,8 @@ const plans = [
 
 
 
+/* ================= DISPLAY PLANS ================= */
+
 plansContainer.innerHTML =
   plans.map(
     (plan) => `
@@ -616,6 +785,7 @@ plansContainer.innerHTML =
 
           <div>
             Daily Amount
+
             <strong>
               ${formatMoney(plan.daily)}
             </strong>
@@ -623,6 +793,7 @@ plansContainer.innerHTML =
 
           <div>
             Duration
+
             <strong>
               ${plan.days} Days
             </strong>
@@ -630,6 +801,7 @@ plansContainer.innerHTML =
 
           <div>
             Stated Total
+
             <strong>
               ${formatMoney(plan.total)}
             </strong>
@@ -639,6 +811,7 @@ plansContainer.innerHTML =
 
         <button
           class="plan-button"
+          type="button"
           onclick="showPlanNotice()"
         >
           VIEW PLAN
@@ -652,11 +825,16 @@ plansContainer.innerHTML =
 
 
 
+/* ================= PLAN NOTICE ================= */
+
 window.showPlanNotice =
   function () {
 
-    alert(
-      "Please review the plan terms before proceeding."
+    processingText.textContent =
+      "Plan information is being prepared. Please review all terms before making a financial decision.";
+
+    processingOverlay.classList.add(
+      "show"
     );
 
   };
