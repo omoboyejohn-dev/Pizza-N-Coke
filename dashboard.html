@@ -16,96 +16,697 @@
 
   <style>
 
-    /* ================= PROCESSING OVERLAY ================= */
+/* =====================================================
+   PIZZA N COKE DASHBOARD
+   BLACK ⚫ BLUE 💙 YELLOW 💛
+===================================================== */
 
-    .processing-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.72);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      padding: 20px;
-    }
-
-    .processing-overlay.show {
-      display: flex;
-    }
-
-    .processing-box {
-      width: min(100%, 380px);
-      background: #ffffff;
-      border-radius: 24px;
-      padding: 35px 25px;
-      text-align: center;
-      box-shadow: 0 25px 70px rgba(0,0,0,.35);
-    }
-
-    .processing-icon {
-      font-size: 50px;
-      margin-bottom: 15px;
-    }
-
-    .processing-box h2 {
-      margin: 0;
-      color: #111111;
-      font-size: 25px;
-      font-weight: 900;
-    }
-
-    .processing-box p {
-      margin: 10px 0 22px;
-      color: #6f7b8b;
-      font-size: 14px;
-    }
-
-    .processing-spinner {
-      width: 42px;
-      height: 42px;
-      margin: auto;
-      border: 4px solid #e5e5e5;
-      border-top-color: #0757d9;
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-    }
-
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
-    }
-
-    .processing-close {
-      margin-top: 22px;
-      border: none;
-      background: #ffd400;
-      color: #111111;
-      padding: 12px 25px;
-      border-radius: 12px;
-      font-weight: 900;
-      cursor: pointer;
-    }
+body {
+  background: #050505;
+  color: #ffffff;
+}
 
 
-    /* ================= PLANS HEADING ================= */
+/* =====================================================
+   DASHBOARD HEADER
+===================================================== */
 
-    .plans-heading {
-      text-align: center;
-    }
+.dashboard-header {
+  background: #050505;
+  border-bottom: 1px solid #202020;
+}
 
-    .plans-heading h2 {
-      font-weight: 950;
-      text-align: center;
-    }
+.dashboard-nav {
+  width: min(calc(100% - 30px), 1100px);
+  min-height: 76px;
+  margin: auto;
 
-    .plans-heading h2 span {
-      font-weight: 950;
-    }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
-    .plans-heading p {
-      text-align: center;
-    }
+
+/* =====================================================
+   LOGO
+===================================================== */
+
+.logo {
+  font-size: 27px;
+  font-weight: 900;
+  color: #ffffff;
+}
+
+.logo span {
+  color: #ffd400;
+}
+
+.logo b {
+  color: #168cff;
+}
+
+
+/* =====================================================
+   HEADER RIGHT
+===================================================== */
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar {
+  width: 46px;
+  height: 46px;
+
+  border-radius: 50%;
+
+  display: grid;
+  place-items: center;
+
+  background: #ffd400;
+  color: #050505;
+
+  font-weight: 950;
+  font-size: 18px;
+}
+
+.logout-button {
+  background: transparent;
+  color: #ffffff;
+
+  border: 1px solid #333333;
+  border-radius: 12px;
+
+  padding: 11px 17px;
+
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background: #168cff;
+  border-color: #168cff;
+  color: #ffffff;
+}
+
+
+/* =====================================================
+   MAIN
+===================================================== */
+
+.dashboard-container {
+  width: min(calc(100% - 30px), 1100px);
+
+  margin: auto;
+
+  padding: 35px 0 70px;
+}
+
+
+/* =====================================================
+   WELCOME
+===================================================== */
+
+.welcome-box {
+  background: #0b0b0b;
+
+  border: 1px solid #222222;
+
+  border-radius: 25px;
+
+  padding: 28px;
+
+  margin-bottom: 18px;
+
+  box-shadow:
+    0 15px 40px rgba(0,0,0,0.35);
+}
+
+.welcome-small {
+  color: #ffd400;
+
+  font-weight: 950;
+  font-size: 14px;
+}
+
+.welcome-box h1 {
+  margin-top: 10px;
+
+  font-size: clamp(30px, 6vw, 48px);
+
+  color: #ffffff;
+}
+
+.welcome-box h1 span {
+  color: #168cff;
+}
+
+.welcome-box p {
+  margin-top: 8px;
+
+  color: #a7a7a7;
+}
+
+
+/* =====================================================
+   BALANCE CARD
+===================================================== */
+
+.balance-card {
+  position: relative;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      135deg,
+      #061a38,
+      #0757d9,
+      #168cff
+    );
+
+  color: #ffffff;
+
+  border-radius: 28px;
+
+  padding: 30px;
+
+  box-shadow:
+    0 20px 50px rgba(7,87,217,0.25);
+}
+
+.balance-card::after {
+  content: "🍕";
+
+  position: absolute;
+
+  right: 20px;
+  bottom: -35px;
+
+  font-size: 180px;
+
+  opacity: 0.07;
+
+  transform: rotate(-15deg);
+}
+
+.balance-label {
+  color: #d7e6ff;
+  font-size: 15px;
+}
+
+.balance-amount {
+  margin: 7px 0 14px;
+
+  font-size: clamp(38px, 8vw, 55px);
+
+  font-weight: 950;
+
+  letter-spacing: -2px;
+}
+
+.welcome-bonus {
+  display: inline-block;
+
+  background: rgba(255,212,0,0.18);
+
+  color: #ffd400;
+
+  padding: 10px 15px;
+
+  border-radius: 25px;
+
+  font-size: 13px;
+
+  font-weight: 900;
+}
+
+
+/* =====================================================
+   BALANCE BUTTONS
+===================================================== */
+
+.balance-buttons {
+  display: flex;
+
+  gap: 12px;
+
+  margin-top: 23px;
+}
+
+.balance-buttons a {
+  padding: 15px 25px;
+
+  border-radius: 13px;
+
+  font-weight: 950;
+
+  text-align: center;
+
+  cursor: pointer;
+}
+
+.add-funds-button {
+  background: #ffd400;
+  color: #050505;
+}
+
+.withdraw-button {
+  background: #ffffff;
+  color: #050505;
+}
+
+.add-funds-button:hover {
+  background: #ffffff;
+}
+
+.withdraw-button:hover {
+  background: #ffd400;
+}
+
+
+/* =====================================================
+   QUICK ACTIONS
+===================================================== */
+
+.quick-actions {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap: 15px;
+
+  margin: 20px 0 35px;
+}
+
+.dashboard-tile {
+  min-height: 130px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  text-align: center;
+
+  gap: 10px;
+
+  padding: 15px;
+
+  background: #0b0b0b;
+
+  color: #ffffff;
+
+  border: 1px solid #242424;
+
+  border-radius: 20px;
+
+  font-weight: 900;
+
+  transition: 0.2s;
+
+  cursor: pointer;
+}
+
+.dashboard-tile:hover {
+  transform: translateY(-4px);
+
+  border-color: #168cff;
+
+  background: #101010;
+
+  box-shadow:
+    0 12px 30px rgba(22,140,255,0.15);
+}
+
+.tile-icon {
+  font-size: 34px;
+}
+
+
+/* =====================================================
+   PLANS
+===================================================== */
+
+.plans-section {
+  background: #0b0b0b;
+
+  border: 1px solid #242424;
+
+  border-radius: 27px;
+
+  padding: 30px;
+}
+
+
+/* CENTERED + BOLD */
+
+.plans-heading {
+  text-align: center;
+}
+
+.plans-heading h2 {
+  font-size: 32px;
+
+  font-weight: 950;
+
+  color: #ffffff;
+}
+
+.plans-heading h2 span {
+  color: #ffd400;
+}
+
+.plans-heading p {
+  margin-top: 10px;
+
+  color: #a7a7a7;
+
+  font-size: 14px;
+
+  font-weight: 700;
+}
+
+
+/* =====================================================
+   PLAN GRID
+===================================================== */
+
+.plans-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, 1fr);
+
+  gap: 16px;
+
+  margin-top: 25px;
+}
+
+.plan-card {
+  border: 1px solid #282828;
+
+  border-radius: 20px;
+
+  padding: 22px;
+
+  background: #111111;
+
+  transition: 0.2s;
+}
+
+.plan-card:hover {
+  border-color: #168cff;
+
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 15px 35px rgba(22,140,255,0.12);
+}
+
+.plan-number {
+  color: #168cff;
+
+  font-weight: 950;
+
+  font-size: 15px;
+}
+
+.plan-price {
+  margin: 8px 0 15px;
+
+  font-size: 28px;
+
+  font-weight: 950;
+
+  color: #ffd400;
+}
+
+.plan-info {
+  display: grid;
+
+  gap: 10px;
+
+  color: #999999;
+
+  font-size: 13px;
+}
+
+.plan-info strong {
+  display: block;
+
+  margin-top: 3px;
+
+  color: #ffffff;
+
+  font-size: 15px;
+}
+
+
+/* =====================================================
+   PLAN BUTTON
+===================================================== */
+
+.plan-button {
+  width: 100%;
+
+  margin-top: 18px;
+
+  padding: 14px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  background: #ffd400;
+
+  color: #050505;
+
+  font-weight: 950;
+
+  cursor: pointer;
+}
+
+.plan-button:hover {
+  background: #168cff;
+
+  color: #ffffff;
+}
+
+
+/* =====================================================
+   PROCESSING OVERLAY
+===================================================== */
+
+.processing-overlay {
+  position: fixed;
+
+  inset: 0;
+
+  background:
+    rgba(0,0,0,0.82);
+
+  display: none;
+
+  align-items: center;
+
+  justify-content: center;
+
+  z-index: 9999;
+
+  backdrop-filter: blur(5px);
+}
+
+.processing-box {
+  width: min(90%, 360px);
+
+  background: #0b0b0b;
+
+  border: 1px solid #168cff;
+
+  border-radius: 22px;
+
+  padding: 30px;
+
+  text-align: center;
+
+  box-shadow:
+    0 25px 80px rgba(0,0,0,0.6);
+}
+
+.processing-spinner {
+  width: 45px;
+  height: 45px;
+
+  border: 4px solid #333333;
+
+  border-top-color: #ffd400;
+
+  border-right-color: #168cff;
+
+  border-radius: 50%;
+
+  margin: 0 auto 18px;
+
+  animation:
+    spin 0.8s linear infinite;
+}
+
+.processing-box h3 {
+  color: #ffffff;
+
+  font-size: 20px;
+
+  margin-bottom: 7px;
+}
+
+.processing-box p {
+  color: #999999;
+
+  font-size: 13px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 800px) {
+
+  .quick-actions {
+    grid-template-columns:
+      repeat(4, 1fr);
+
+    gap: 9px;
+  }
+
+  .dashboard-tile {
+    min-height: 105px;
+
+    padding: 8px;
+
+    font-size: 11px;
+  }
+
+  .tile-icon {
+    font-size: 27px;
+  }
+
+  .plans-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+@media (max-width: 600px) {
+
+  .dashboard-container,
+  .dashboard-nav {
+    width: calc(100% - 24px);
+  }
+
+  .dashboard-nav {
+    min-height: 70px;
+  }
+
+  .dashboard-nav .logo {
+    font-size: 21px;
+  }
+
+  .avatar {
+    width: 40px;
+    height: 40px;
+  }
+
+  .logout-button {
+    padding: 9px 12px;
+    font-size: 12px;
+  }
+
+  .welcome-box {
+    padding: 22px;
+  }
+
+  .balance-card {
+    padding: 24px;
+  }
+
+  .balance-buttons {
+    flex-direction: row;
+  }
+
+  .balance-buttons a {
+    flex: 1;
+
+    padding: 14px 8px;
+
+    font-size: 13px;
+  }
+
+  .quick-actions {
+    grid-template-columns:
+      repeat(4, 1fr);
+
+    gap: 7px;
+  }
+
+  .dashboard-tile {
+    min-height: 100px;
+
+    border-radius: 15px;
+
+    font-size: 10px;
+  }
+
+  .tile-icon {
+    font-size: 24px;
+  }
+
+  .plans-section {
+    padding: 22px 15px;
+  }
+
+  .plans-heading h2 {
+    font-size: 25px;
+  }
+
+}
+
+
+@media (max-width: 380px) {
+
+  .quick-actions {
+    gap: 5px;
+  }
+
+  .dashboard-tile {
+    min-height: 92px;
+
+    font-size: 9px;
+  }
+
+  .tile-icon {
+    font-size: 21px;
+  }
+
+  .logout-button {
+    display: none;
+  }
+
+}
 
   </style>
 
@@ -115,16 +716,22 @@
 <body>
 
 
-<!-- ================= HEADER ================= -->
+<!-- =====================================================
+     HEADER
+===================================================== -->
 
 <header class="dashboard-header">
 
   <div class="dashboard-nav">
 
     <div class="logo">
+
       Pizza 🍕
+
       <span>N</span>
+
       <b>Coke</b>
+
     </div>
 
 
@@ -140,7 +747,6 @@
       <button
         id="logoutTop"
         class="logout-button"
-        type="button"
       >
         Logout
       </button>
@@ -153,12 +759,14 @@
 
 
 
-<!-- ================= MAIN ================= -->
+<!-- =====================================================
+     MAIN
+===================================================== -->
 
 <main class="dashboard-container">
 
 
-  <!-- ================= WELCOME ================= -->
+  <!-- WELCOME -->
 
   <section class="welcome-box">
 
@@ -169,9 +777,11 @@
     <h1>
 
       Hello,
+
       <span id="username">
         User
       </span>
+
       👋
 
     </h1>
@@ -184,14 +794,15 @@
 
 
 
-  <!-- ================= BALANCE ================= -->
+  <!-- =================================================
+       BALANCE
+  ================================================== -->
 
   <section class="balance-card">
 
     <div class="balance-label">
       Available Balance
     </div>
-
 
     <div
       id="balance"
@@ -200,27 +811,22 @@
       ₦2,000.00
     </div>
 
-
     <div class="welcome-bonus">
       🎁 ₦2,000 Welcome Bonus
     </div>
 
-
     <div class="balance-buttons">
 
       <a
-        href="#"
+        href="add-funds.html"
         class="add-funds-button processing-link"
-        data-name="Add Funds"
       >
         + Add Funds
       </a>
 
-
       <a
-        href="#"
+        href="withdraw.html"
         class="withdraw-button processing-link"
-        data-name="Withdraw"
       >
         Withdraw
       </a>
@@ -231,15 +837,16 @@
 
 
 
-  <!-- ================= QUICK ACTIONS ================= -->
+  <!-- =================================================
+       QUICK ACTIONS
+  ================================================== -->
 
   <section class="quick-actions">
 
 
     <a
-      href="#"
+      href="profile.html"
       class="dashboard-tile processing-link"
-      data-name="Profile"
     >
 
       <div class="tile-icon">
@@ -254,9 +861,8 @@
 
 
     <a
-      href="#"
+      href="add-funds.html"
       class="dashboard-tile processing-link"
-      data-name="Add Funds"
     >
 
       <div class="tile-icon">
@@ -271,9 +877,8 @@
 
 
     <a
-      href="#"
+      href="withdraw.html"
       class="dashboard-tile processing-link"
-      data-name="Withdraw"
     >
 
       <div class="tile-icon">
@@ -288,9 +893,8 @@
 
 
     <a
-      href="#"
+      href="history.html"
       class="dashboard-tile processing-link"
-      data-name="History"
     >
 
       <div class="tile-icon">
@@ -305,9 +909,8 @@
 
 
     <a
-      href="#"
+      href="support.html"
       class="dashboard-tile processing-link"
-      data-name="Customer Support"
     >
 
       <div class="tile-icon">
@@ -322,9 +925,8 @@
 
 
     <a
-      href="#"
+      href="referral.html"
       class="dashboard-tile processing-link"
-      data-name="Referral"
     >
 
       <div class="tile-icon">
@@ -339,9 +941,8 @@
 
 
     <a
-      href="#"
+      href="group-chat.html"
       class="dashboard-tile processing-link"
-      data-name="Group Chat"
     >
 
       <div class="tile-icon">
@@ -375,18 +976,17 @@
 
 
 
-  <!-- ================= PLANS ================= -->
+  <!-- =================================================
+       PLANS
+  ================================================== -->
 
   <section class="plans-section">
-
 
     <div class="plans-heading">
 
       <h2>
         Choose Your
-        <span>
-          Pizza N Coke
-        </span>
+        <span>Pizza N Coke</span>
       </h2>
 
       <p>
@@ -403,12 +1003,13 @@
 
   </section>
 
-
 </main>
 
 
 
-<!-- ================= PROCESSING MODAL ================= -->
+<!-- =====================================================
+     PROCESSING POPUP
+===================================================== -->
 
 <div
   id="processingOverlay"
@@ -417,27 +1018,15 @@
 
   <div class="processing-box">
 
-    <div class="processing-icon">
-      🍕
-    </div>
-
-    <h2>
-      Processing...
-    </h2>
-
-    <p id="processingText">
-      This section is currently being prepared.
-    </p>
-
     <div class="processing-spinner"></div>
 
-    <button
-      id="processingClose"
-      class="processing-close"
-      type="button"
-    >
-      CLOSE
-    </button>
+    <h3>
+      Processing...
+    </h3>
+
+    <p>
+      Please wait while we open this page.
+    </p>
 
   </div>
 
@@ -445,7 +1034,9 @@
 
 
 
-<!-- ================= JAVASCRIPT ================= -->
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
 
 <script type="module">
 
@@ -467,9 +1058,6 @@ import {
 } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
 
-
-/* ================= ELEMENTS ================= */
-
 const username =
   document.getElementById("username");
 
@@ -485,15 +1073,10 @@ const plansContainer =
 const processingOverlay =
   document.getElementById("processingOverlay");
 
-const processingText =
-  document.getElementById("processingText");
 
-const processingClose =
-  document.getElementById("processingClose");
-
-
-
-/* ================= MONEY FORMAT ================= */
+/* =====================================================
+   MONEY FORMAT
+===================================================== */
 
 function formatMoney(amount) {
 
@@ -509,8 +1092,9 @@ function formatMoney(amount) {
 }
 
 
-
-/* ================= AUTH CHECK ================= */
+/* =====================================================
+   AUTH CHECK
+===================================================== */
 
 onAuthStateChanged(
   auth,
@@ -525,7 +1109,6 @@ onAuthStateChanged(
 
     }
 
-
     try {
 
       const userRef =
@@ -535,38 +1118,31 @@ onAuthStateChanged(
           user.uid
         );
 
-
       const userSnapshot =
         await getDoc(userRef);
-
 
       const userData =
         userSnapshot.exists()
           ? userSnapshot.data()
           : {};
 
-
       const name =
         userData.username ||
         user.displayName ||
         "User";
 
-
       username.textContent =
         name;
-
 
       avatar.textContent =
         name
           .charAt(0)
           .toUpperCase();
 
-
       balance.textContent =
         formatMoney(
           userData.walletBalance || 0
         );
-
 
     } catch (error) {
 
@@ -581,8 +1157,49 @@ onAuthStateChanged(
 );
 
 
+/* =====================================================
+   PROCESSING NAVIGATION
+===================================================== */
 
-/* ================= LOGOUT ================= */
+document
+  .querySelectorAll(".processing-link")
+  .forEach((link) => {
+
+    link.addEventListener(
+      "click",
+      (event) => {
+
+        event.preventDefault();
+
+        const destination =
+          link.getAttribute("href");
+
+        if (!destination) {
+          return;
+        }
+
+        processingOverlay.style.display =
+          "flex";
+
+        setTimeout(
+          () => {
+
+            window.location.href =
+              destination;
+
+          },
+          1500
+        );
+
+      }
+    );
+
+  });
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
 
 async function logout() {
 
@@ -595,10 +1212,7 @@ async function logout() {
 
   } catch (error) {
 
-    console.error(
-      "Logout error:",
-      error
-    );
+    console.error(error);
 
   }
 
@@ -617,83 +1231,19 @@ document
   .getElementById("logoutTile")
   .addEventListener(
     "click",
-    logout
+    async (event) => {
+
+      event.preventDefault();
+
+      await logout();
+
+    }
   );
 
 
-
-/* ================= PROCESSING ================= */
-
-document
-  .querySelectorAll(".processing-link")
-  .forEach((button) => {
-
-    button.addEventListener(
-      "click",
-      (event) => {
-
-        event.preventDefault();
-
-
-        const name =
-          button.dataset.name ||
-          "This section";
-
-
-        processingText.textContent =
-          name +
-          " is currently being processed and will be available soon.";
-
-
-        processingOverlay.classList.add(
-          "show"
-        );
-
-      }
-    );
-
-  });
-
-
-
-/* ================= CLOSE PROCESSING ================= */
-
-processingClose.addEventListener(
-  "click",
-  () => {
-
-    processingOverlay.classList.remove(
-      "show"
-    );
-
-  }
-);
-
-
-
-/* Close when clicking outside */
-
-processingOverlay.addEventListener(
-  "click",
-  (event) => {
-
-    if (
-      event.target ===
-      processingOverlay
-    ) {
-
-      processingOverlay.classList.remove(
-        "show"
-      );
-
-    }
-
-  }
-);
-
-
-
-/* ================= PLAN DATA ================= */
+/* =====================================================
+   PLANS
+===================================================== */
 
 const plans = [
 
@@ -764,9 +1314,6 @@ const plans = [
 ];
 
 
-
-/* ================= DISPLAY PLANS ================= */
-
 plansContainer.innerHTML =
   plans.map(
     (plan) => `
@@ -785,7 +1332,6 @@ plansContainer.innerHTML =
 
           <div>
             Daily Amount
-
             <strong>
               ${formatMoney(plan.daily)}
             </strong>
@@ -793,7 +1339,6 @@ plansContainer.innerHTML =
 
           <div>
             Duration
-
             <strong>
               ${plan.days} Days
             </strong>
@@ -801,7 +1346,6 @@ plansContainer.innerHTML =
 
           <div>
             Stated Total
-
             <strong>
               ${formatMoney(plan.total)}
             </strong>
@@ -812,7 +1356,6 @@ plansContainer.innerHTML =
         <button
           class="plan-button"
           type="button"
-          onclick="showPlanNotice()"
         >
           VIEW PLAN
         </button>
@@ -824,24 +1367,28 @@ plansContainer.innerHTML =
   .join("");
 
 
+/* =====================================================
+   PLAN BUTTON
+===================================================== */
 
-/* ================= PLAN NOTICE ================= */
+document
+  .querySelectorAll(".plan-button")
+  .forEach((button) => {
 
-window.showPlanNotice =
-  function () {
+    button.addEventListener(
+      "click",
+      () => {
 
-    processingText.textContent =
-      "Plan information is being prepared. Please review all terms before making a financial decision.";
+        alert(
+          "Please review the plan terms before proceeding."
+        );
 
-    processingOverlay.classList.add(
-      "show"
+      }
     );
 
-  };
+  });
 
 </script>
 
-
 </body>
-
 </html>
